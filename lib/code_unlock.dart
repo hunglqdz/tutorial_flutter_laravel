@@ -1,5 +1,6 @@
+import 'package:appdemo/localization/locales.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_localization/flutter_localization.dart';
 import 'key_pad.dart';
 
 class CodeUnlock extends StatefulWidget {
@@ -10,37 +11,63 @@ class CodeUnlock extends StatefulWidget {
 }
 
 class _CodeUnlockState extends State {
+  late FlutterLocalization _flutterLocalization;
+  late String _currentLocale;
+
   String displayCode = '';
   TextEditingController pinController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    _flutterLocalization = FlutterLocalization.instance;
+    _currentLocale = _flutterLocalization.currentLocale!.languageCode;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('LOGIN'),
-        backgroundColor: Colors.blue,
+        title: Text(LocaleData.hello.getString(context)),
+        actions: [
+          DropdownButton(
+            items: const [
+              DropdownMenuItem(
+                value: 'en',
+                child: Text('English'),
+              ),
+              DropdownMenuItem(
+                value: 'vi',
+                child: Text('Tiếng Việt'),
+              ),
+              DropdownMenuItem(
+                value: 'de',
+                child: Text('Deutsch'),
+              ),
+            ],
+            value: _currentLocale,
+            onChanged: (value) {
+              _setLocale(value);
+            },
+          )
+        ],
       ),
       body: Builder(
         builder: (context) => Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 50, bottom: 15),
+              Padding(
+                padding: const EdgeInsets.only(left: 50, bottom: 15),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.key,
-                      color: Colors.blue,
+                      color: Colors.orange,
                     ),
                     Text(
-                      'Password',
-                      style: TextStyle(fontSize: 15),
+                      LocaleData.password.getString(context),
+                      style: const TextStyle(fontSize: 15),
                     ),
                   ],
                 ),
@@ -56,9 +83,10 @@ class _CodeUnlockState extends State {
                       readOnly: true,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                       ),
@@ -100,5 +128,21 @@ class _CodeUnlockState extends State {
 
   void showInSnackBar(String value) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value)));
+  }
+
+  void _setLocale(String? value) {
+    if (value == null) return;
+    if (value == 'en') {
+      _flutterLocalization.translate('en');
+    } else if (value == 'vi') {
+      _flutterLocalization.translate('vi');
+    } else if (value == 'de') {
+      _flutterLocalization.translate('de');
+    } else {
+      return;
+    }
+    setState(() {
+      _currentLocale = value;
+    });
   }
 }

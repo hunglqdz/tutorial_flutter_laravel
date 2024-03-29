@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'pages/admin_page.dart';
+
 class KeyPad extends StatelessWidget {
   final TextEditingController pinController;
   final Function onChange;
@@ -19,7 +21,6 @@ class KeyPad extends StatelessWidget {
       margin: const EdgeInsets.only(left: 30, right: 30),
       child: Column(
         children: [
-          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -28,7 +29,6 @@ class KeyPad extends StatelessWidget {
               buttonWidget('9'),
             ],
           ),
-          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -37,7 +37,6 @@ class KeyPad extends StatelessWidget {
               buttonWidget('6'),
             ],
           ),
-          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -46,12 +45,11 @@ class KeyPad extends StatelessWidget {
               buttonWidget('3'),
             ],
           ),
-          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               buttonWidget('0'),
-              functionButtonWidget('Esc', () {
+              functionButtonWidget('Del', () {
                 if (pinController.text.isNotEmpty) {
                   pinController.text = pinController.text
                       .substring(0, pinController.text.length - 1);
@@ -61,14 +59,21 @@ class KeyPad extends StatelessWidget {
                 }
                 onChange(pinController.text);
               }),
-              !isPinLogin
-                  ? functionButtonWidget('Enter', () {
-                      if (pinController.text.length > 5) {
-                        pinController.text = pinController.text.substring(0, 3);
-                      }
-                      onSubmit(pinController.text);
-                    })
-                  : Container(width: 100),
+              functionButtonWidget('Enter', () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const AdminPage(),
+                  ),
+                );
+              })
+              // !isPinLogin
+              //     ? functionButtonWidget('Enter', () {
+              //         if (pinController.text.length > 5) {
+              //           pinController.text = pinController.text.substring(0, 3);
+              //         }
+              //         onSubmit(pinController.text);
+              //       })
+              //     : Container(width: 100),
             ],
           ),
         ],
@@ -77,10 +82,19 @@ class KeyPad extends StatelessWidget {
   }
 
   buttonWidget(String buttonText) {
-    return SizedBox(
-      height: 50,
-      width: 100,
+    return Container(
+      margin: const EdgeInsets.all(5),
+      color: Colors.grey,
+      height: 40,
+      width: 80,
       child: TextButton(
+        // style: ButtonStyle(
+        //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        //     const RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.zero,
+        //     ),
+        //   ),
+        // ),
         onPressed: () {
           if (pinController.text.length <= 3) {
             pinController.text = pinController.text + buttonText;
@@ -93,7 +107,7 @@ class KeyPad extends StatelessWidget {
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.black,
-              fontSize: 25,
+              fontSize: 20,
             ),
           ),
         ),
@@ -102,17 +116,26 @@ class KeyPad extends StatelessWidget {
   }
 
   functionButtonWidget(String buttonText, Function() function) {
-    return SizedBox(
-      height: 50,
-      width: 100,
+    return Container(
+      margin: const EdgeInsets.all(5),
+      color: Colors.grey,
+      height: 40,
+      width: 80,
       child: TextButton(
+        // style: ButtonStyle(
+        //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        //     const RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.zero,
+        //     ),
+        //   ),
+        // ),
         onPressed: function,
         child: Center(
           child: Text(
             buttonText,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: buttonText == 'Esc' ? Colors.black : Colors.red,
+              color: buttonText == 'Del' ? Colors.black : Colors.red,
               fontSize: 20,
             ),
           ),
