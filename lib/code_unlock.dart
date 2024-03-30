@@ -28,6 +28,7 @@ class _CodeUnlockState extends State {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.orange,
         title: Text(LocaleData.hello.getString(context)),
         actions: [
           DropdownButton(

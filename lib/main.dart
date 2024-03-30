@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: localization.supportedLocales,
       localizationsDelegates: localization.localizationsDelegates,
       home: const CodeUnlock(),
-      theme: ThemeData(primarySwatch: Colors.orange),
+      theme: ThemeData(primaryColor: Colors.orange),
     );
   }
 

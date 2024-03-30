@@ -1,3 +1,4 @@
+import 'package:appdemo/pages/table_page.dart';
 import 'package:flutter/material.dart';
 
 class AdminPage extends StatefulWidget {
@@ -11,7 +12,7 @@ class _AdminPageState extends State<AdminPage> {
   int _currentIndex = 0;
 
   final tabs = [
-    const Center(child: Text('tab1')),
+    const TablePage(),
     const Center(child: Text('tab2')),
     const Center(child: Text('tab3')),
     const Center(child: Text('tab4')),
@@ -28,6 +29,7 @@ class _AdminPageState extends State<AdminPage> {
         actions: const [Icon(Icons.notifications)],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.orange,
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         iconSize: 30,
@@ -37,27 +39,22 @@ class _AdminPageState extends State<AdminPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.table_restaurant),
             label: 'Table',
-            backgroundColor: Colors.orange,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.lunch_dining),
             label: 'Items',
-            backgroundColor: Colors.orange,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.dining),
             label: 'Order',
-            backgroundColor: Colors.orange,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Users',
-            backgroundColor: Colors.orange,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bar_chart),
             label: 'Stats',
-            backgroundColor: Colors.orange,
           ),
         ],
         onTap: (index) {
