@@ -17,8 +17,8 @@ class KeyPad extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 30, right: 30),
+    return SizedBox(
+      width: 300,
       child: Column(
         children: [
           Row(
@@ -29,6 +29,7 @@ class KeyPad extends StatelessWidget {
               buttonWidget('9'),
             ],
           ),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -37,6 +38,7 @@ class KeyPad extends StatelessWidget {
               buttonWidget('6'),
             ],
           ),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -45,11 +47,12 @@ class KeyPad extends StatelessWidget {
               buttonWidget('3'),
             ],
           ),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               buttonWidget('0'),
-              functionButtonWidget('Del', () {
+              functionButtonWidget('Esc', () {
                 if (pinController.text.isNotEmpty) {
                   pinController.text = pinController.text
                       .substring(0, pinController.text.length - 1);
@@ -83,18 +86,10 @@ class KeyPad extends StatelessWidget {
 
   buttonWidget(String buttonText) {
     return Container(
-      margin: const EdgeInsets.all(5),
-      color: Colors.grey,
-      height: 40,
-      width: 80,
+      color: const Color.fromARGB(255, 222, 222, 222),
+      height: 45,
+      width: 90,
       child: TextButton(
-        // style: ButtonStyle(
-        //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        //     const RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.zero,
-        //     ),
-        //   ),
-        // ),
         onPressed: () {
           if (pinController.text.length <= 3) {
             pinController.text = pinController.text + buttonText;
@@ -117,25 +112,17 @@ class KeyPad extends StatelessWidget {
 
   functionButtonWidget(String buttonText, Function() function) {
     return Container(
-      margin: const EdgeInsets.all(5),
-      color: Colors.grey,
-      height: 40,
-      width: 80,
+      color: const Color.fromARGB(255, 222, 222, 222),
+      height: 45,
+      width: 90,
       child: TextButton(
-        // style: ButtonStyle(
-        //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        //     const RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.zero,
-        //     ),
-        //   ),
-        // ),
         onPressed: function,
         child: Center(
           child: Text(
             buttonText,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: buttonText == 'Del' ? Colors.black : Colors.red,
+              color: buttonText == 'Esc' ? Colors.black : Colors.red,
               fontSize: 20,
             ),
           ),

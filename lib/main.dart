@@ -2,7 +2,7 @@ import 'package:appdemo/localization/locales.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localization/flutter_localization.dart';
-import 'code_unlock.dart';
+import 'login_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
       locale: const Locale('en'),
       supportedLocales: localization.supportedLocales,
       localizationsDelegates: localization.localizationsDelegates,
-      home: const CodeUnlock(),
+      home: const LoginPage(),
       theme: ThemeData(primaryColor: Colors.orange),
     );
   }

@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'key_pad.dart';
 
-class CodeUnlock extends StatefulWidget {
-  const CodeUnlock({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  _CodeUnlockState createState() => _CodeUnlockState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _CodeUnlockState extends State {
-  late FlutterLocalization _flutterLocalization;
-  late String _currentLocale;
+class _LoginPageState extends State {
+  // late String _currentLocale;
 
   String displayCode = '';
   TextEditingController pinController = TextEditingController();
@@ -20,8 +19,8 @@ class _CodeUnlockState extends State {
   @override
   void initState() {
     super.initState();
-    _flutterLocalization = FlutterLocalization.instance;
-    _currentLocale = _flutterLocalization.currentLocale!.languageCode;
+    // _flutterLocalization = FlutterLocalization.instance;
+    // _currentLocale = _flutterLocalization.currentLocale!.languageCode;
   }
 
   @override
@@ -30,28 +29,28 @@ class _CodeUnlockState extends State {
       appBar: AppBar(
         backgroundColor: Colors.orange,
         title: Text(LocaleData.hello.getString(context)),
-        actions: [
-          DropdownButton(
-            items: const [
-              DropdownMenuItem(
-                value: 'en',
-                child: Text('English'),
-              ),
-              DropdownMenuItem(
-                value: 'vi',
-                child: Text('Tiếng Việt'),
-              ),
-              DropdownMenuItem(
-                value: 'de',
-                child: Text('Deutsch'),
-              ),
-            ],
-            value: _currentLocale,
-            onChanged: (value) {
-              _setLocale(value);
-            },
-          )
-        ],
+        // actions: [
+        //   DropdownButton(
+        //     items: const [
+        //       DropdownMenuItem(
+        //         value: 'en',
+        //         child: Text('English'),
+        //       ),
+        //       DropdownMenuItem(
+        //         value: 'vi',
+        //         child: Text('Tiếng Việt'),
+        //       ),
+        //       DropdownMenuItem(
+        //         value: 'de',
+        //         child: Text('Deutsch'),
+        //       ),
+        //     ],
+        //     value: _currentLocale,
+        //     onChanged: (value) {
+        //       _setLocale(value);
+        //     },
+        //   )
+        // ],
       ),
       body: Builder(
         builder: (context) => Center(
@@ -76,20 +75,17 @@ class _CodeUnlockState extends State {
               Padding(
                 padding: const EdgeInsets.only(left: 50, right: 50, bottom: 15),
                 child: Container(
-                  decoration: const BoxDecoration(color: Colors.black),
+                  width: 300,
+                  decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 222, 222, 222)),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: TextField(
-                      controller: pinController,
-                      readOnly: true,
+                    padding: const EdgeInsets.all(15),
+                    child: Text(
+                      pinController.text.replaceAll(RegExp(r'.'), '*'),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        color: Colors.white,
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                      ),
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
                       ),
                     ),
                   ),
@@ -120,6 +116,20 @@ class _CodeUnlockState extends State {
                   }
                 },
               ),
+              const SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FlagButton(
+                      flagImage: 'assets/flags/usa.png', languageCode: 'en'),
+                  FlagButton(
+                      flagImage: 'assets/flags/vietnam.png',
+                      languageCode: 'vi'),
+                  FlagButton(
+                      flagImage: 'assets/flags/germany.png',
+                      languageCode: 'de'),
+                ],
+              )
             ],
           ),
         ),
@@ -130,6 +140,19 @@ class _CodeUnlockState extends State {
   void showInSnackBar(String value) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value)));
   }
+}
+
+class FlagButton extends StatelessWidget {
+  final String flagImage;
+  final String languageCode;
+
+  final FlutterLocalization _flutterLocalization = FlutterLocalization.instance;
+
+  FlagButton({
+    super.key,
+    required this.flagImage,
+    required this.languageCode,
+  });
 
   void _setLocale(String? value) {
     if (value == null) return;
@@ -142,8 +165,24 @@ class _CodeUnlockState extends State {
     } else {
       return;
     }
-    setState(() {
-      _currentLocale = value;
-    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      // style: ButtonStyle(
+      //     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      //         const RoundedRectangleBorder(
+      //             borderRadius: BorderRadius.zero,
+      //             side: BorderSide(color: Colors.black)))),
+      onTap: () {
+        _setLocale(languageCode);
+      },
+      child: Image.asset(
+        flagImage,
+        width: 100,
+        height: 50,
+      ),
+    );
   }
 }

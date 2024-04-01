@@ -1,6 +1,8 @@
 import 'package:appdemo/pages/table_page.dart';
 import 'package:flutter/material.dart';
 
+import 'items_page.dart';
+
 class AdminPage extends StatefulWidget {
   const AdminPage({super.key});
 
@@ -13,7 +15,7 @@ class _AdminPageState extends State<AdminPage> {
 
   final tabs = [
     const TablePage(),
-    const Center(child: Text('tab2')),
+    const ItemsPage(),
     const Center(child: Text('tab3')),
     const Center(child: Text('tab4')),
     const Center(child: Text('tab5')),
@@ -22,12 +24,6 @@ class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tables'),
-        centerTitle: true,
-        leading: const Icon(Icons.menu),
-        actions: const [Icon(Icons.notifications)],
-      ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.orange,
         currentIndex: _currentIndex,
