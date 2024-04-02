@@ -2,6 +2,7 @@ import 'package:appdemo/pages/table_page.dart';
 import 'package:flutter/material.dart';
 
 import 'items_page.dart';
+import 'profile_page.dart';
 
 class AdminPage extends StatefulWidget {
   const AdminPage({super.key});
@@ -17,7 +18,7 @@ class _AdminPageState extends State<AdminPage> {
     const TablePage(),
     const ItemsPage(),
     const Center(child: Text('tab3')),
-    const Center(child: Text('tab4')),
+    const ProfilePage(),
     const Center(child: Text('tab5')),
   ];
 
@@ -46,7 +47,7 @@ class _AdminPageState extends State<AdminPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Users',
+            label: 'Profile',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bar_chart),
