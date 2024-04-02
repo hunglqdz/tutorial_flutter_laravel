@@ -1,6 +1,8 @@
 import 'package:appdemo/pages/table_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 
+import '../localization/locales.dart';
 import 'items_page.dart';
 import 'profile_page.dart';
 
@@ -32,26 +34,26 @@ class _AdminPageState extends State<AdminPage> {
         iconSize: 30,
         selectedFontSize: 15,
         unselectedFontSize: 10,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.table_restaurant),
-            label: 'Table',
+            icon: const Icon(Icons.table_restaurant),
+            label: LocaleData.table.getString(context),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.lunch_dining),
-            label: 'Items',
+            icon: const Icon(Icons.lunch_dining),
+            label: LocaleData.items.getString(context),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.dining),
-            label: 'Order',
+            icon: const Icon(Icons.dining),
+            label: LocaleData.order.getString(context),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+            icon: const Icon(Icons.person),
+            label: LocaleData.profile.getString(context),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            label: 'Stats',
+            icon: const Icon(Icons.bar_chart),
+            label: LocaleData.stats.getString(context),
           ),
         ],
         onTap: (index) {

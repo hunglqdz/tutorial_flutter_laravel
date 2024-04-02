@@ -1,4 +1,8 @@
+import 'package:appdemo/localization/locales.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 
 class TablePage extends StatefulWidget {
   const TablePage({super.key});
@@ -12,7 +16,7 @@ class _TablePageState extends State<TablePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tables'),
+        title: Text(LocaleData.table.getString(context)),
         centerTitle: true,
         leading: const Icon(Icons.menu),
         actions: const [Icon(Icons.notifications)],
@@ -77,101 +81,40 @@ class _TablePageState extends State<TablePage> {
                   'Select Table',
                   style: TextStyle(color: Colors.grey),
                 ),
-                GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 3,
-                  children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        width: 90,
-                        height: 90,
-                        color: Colors.white,
-                        child: const Text('1'),
-                      ),
+                Expanded(
+                  child: Scrollbar(
+                    thumbVisibility: true,
+                    trackVisibility: true,
+                    interactive: true,
+                    thickness: 5,
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount: 3,
+                      children: List.generate(30, (index) {
+                        return InkWell(
+                          onTap: () {},
+                          child: Container(
+                            margin: const EdgeInsets.all(10),
+                            width: 90,
+                            height: 90,
+                            color: Colors.white,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(LocaleData.table.getString(context)),
+                                Text(
+                                  '${index + 1}',
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      }),
                     ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        width: 90,
-                        height: 90,
-                        color: Colors.white,
-                        child: const Text('2'),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        width: 90,
-                        height: 90,
-                        color: Colors.white,
-                        child: const Text('3'),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        width: 90,
-                        height: 90,
-                        color: Colors.white,
-                        child: const Text('4'),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        width: 90,
-                        height: 90,
-                        color: Colors.white,
-                        child: const Text('5'),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        width: 90,
-                        height: 90,
-                        color: Colors.white,
-                        child: const Text('6'),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        width: 90,
-                        height: 90,
-                        color: Colors.white,
-                        child: const Text('7'),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        width: 90,
-                        height: 90,
-                        color: Colors.white,
-                        child: const Text('8'),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        width: 90,
-                        height: 90,
-                        color: Colors.white,
-                        child: const Text('9'),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),

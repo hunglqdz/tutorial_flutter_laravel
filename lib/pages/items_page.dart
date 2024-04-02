@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+
+import '../localization/locales.dart';
 
 class ItemsPage extends StatefulWidget {
   const ItemsPage({super.key});
@@ -65,7 +68,7 @@ class _ItemsPageState extends State<ItemsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Food & Beverage'),
+        title: Text(LocaleData.items.getString(context)),
         centerTitle: true,
         leading: const Icon(Icons.menu),
         actions: const [Icon(Icons.search)],
