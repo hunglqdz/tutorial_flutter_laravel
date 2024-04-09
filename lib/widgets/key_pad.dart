@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'pages/admin_page.dart';
+import '../pages/admin_page.dart';
 
 class KeyPad extends StatelessWidget {
   final TextEditingController pinController;

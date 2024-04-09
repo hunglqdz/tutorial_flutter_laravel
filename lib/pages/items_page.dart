@@ -71,7 +71,7 @@ class _ItemsPageState extends State<ItemsPage> {
         title: Text(LocaleData.items.getString(context)),
         centerTitle: true,
         leading: const Icon(Icons.menu),
-        actions: const [Icon(Icons.search)],
+        actions: const [Icon(Icons.notifications)],
       ),
       body: ListView.builder(
         itemCount: items.length,

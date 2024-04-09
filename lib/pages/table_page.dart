@@ -1,8 +1,8 @@
-import 'package:appdemo/localization/locales.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:appdemo/widgets/table_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_localization/flutter_localization.dart';
+
+import 'package:appdemo/localization/locales.dart';
 
 class TablePage extends StatefulWidget {
   const TablePage({super.key});
@@ -91,27 +91,7 @@ class _TablePageState extends State<TablePage> {
                       shrinkWrap: true,
                       crossAxisCount: 3,
                       children: List.generate(30, (index) {
-                        return InkWell(
-                          onTap: () {},
-                          child: Container(
-                            margin: const EdgeInsets.all(10),
-                            width: 90,
-                            height: 90,
-                            color: Colors.white,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(LocaleData.table.getString(context)),
-                                Text(
-                                  '${index + 1}',
-                                  style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                )
-                              ],
-                            ),
-                          ),
-                        );
+                        return TableWidget(index: index);
                       }),
                     ),
                   ),

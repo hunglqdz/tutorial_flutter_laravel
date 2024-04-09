@@ -1,8 +1,9 @@
+import 'package:appdemo/pages/order_page.dart';
+import 'package:appdemo/pages/stats_page.dart';
 import 'package:appdemo/pages/table_page.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localization/flutter_localization.dart';
 
-import '../localization/locales.dart';
 import 'items_page.dart';
 import 'profile_page.dart';
 
@@ -14,55 +15,44 @@ class AdminPage extends StatefulWidget {
 }
 
 class _AdminPageState extends State<AdminPage> {
-  int _currentIndex = 0;
+  int index = 0;
 
-  final tabs = [
+  final pages = [
     const TablePage(),
     const ItemsPage(),
-    const Center(child: Text('tab3')),
+    const OrderPage(),
     const ProfilePage(),
-    const Center(child: Text('tab5')),
+    const StatsPage(),
+  ];
+
+  final icons = [
+    const Icon(Icons.table_restaurant, size: 30),
+    const Icon(Icons.fastfood, size: 30),
+    const Icon(Icons.food_bank, size: 30),
+    const Icon(Icons.person, size: 30),
+    const Icon(Icons.bar_chart, size: 30),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.orange,
-        currentIndex: _currentIndex,
-        type: BottomNavigationBarType.fixed,
-        iconSize: 30,
-        selectedFontSize: 15,
-        unselectedFontSize: 10,
-        items: [
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.table_restaurant),
-            label: LocaleData.table.getString(context),
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.lunch_dining),
-            label: LocaleData.items.getString(context),
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.dining),
-            label: LocaleData.order.getString(context),
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.person),
-            label: LocaleData.profile.getString(context),
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.bar_chart),
-            label: LocaleData.stats.getString(context),
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+      extendBody: true,
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          iconTheme: const IconThemeData(color: Colors.white),
+        ),
+        child: CurvedNavigationBar(
+          color: Colors.orange,
+          backgroundColor: Colors.transparent,
+          height: 60,
+          animationCurve: Curves.easeInOut,
+          animationDuration: const Duration(milliseconds: 300),
+          items: icons,
+          index: index,
+          onTap: (index) => setState(() => this.index = index),
+        ),
       ),
-      body: tabs[_currentIndex],
+      body: pages[index],
     );
   }
 }

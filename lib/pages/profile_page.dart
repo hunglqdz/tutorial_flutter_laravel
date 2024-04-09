@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+
+import '../localization/locales.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -6,6 +9,12 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(LocaleData.profile.getString(context)),
+        centerTitle: true,
+        leading: const Icon(Icons.menu),
+        actions: const [Icon(Icons.notifications)],
+      ),
       body: Column(
         children: [
           const Expanded(flex: 2, child: _TopPortion()),

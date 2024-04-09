@@ -1,7 +1,7 @@
 import 'package:appdemo/localization/locales.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
-import 'key_pad.dart';
+import '../widgets/key_pad.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,16 +11,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State {
-  // late String _currentLocale;
-
   String displayCode = '';
   TextEditingController pinController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    // _flutterLocalization = FlutterLocalization.instance;
-    // _currentLocale = _flutterLocalization.currentLocale!.languageCode;
   }
 
   @override
@@ -29,28 +25,6 @@ class _LoginPageState extends State {
       appBar: AppBar(
         backgroundColor: Colors.orange,
         title: Text(LocaleData.hello.getString(context)),
-        // actions: [
-        //   DropdownButton(
-        //     items: const [
-        //       DropdownMenuItem(
-        //         value: 'en',
-        //         child: Text('English'),
-        //       ),
-        //       DropdownMenuItem(
-        //         value: 'vi',
-        //         child: Text('Tiếng Việt'),
-        //       ),
-        //       DropdownMenuItem(
-        //         value: 'de',
-        //         child: Text('Deutsch'),
-        //       ),
-        //     ],
-        //     value: _currentLocale,
-        //     onChanged: (value) {
-        //       _setLocale(value);
-        //     },
-        //   )
-        // ],
       ),
       body: Builder(
         builder: (context) => Center(
@@ -170,11 +144,6 @@ class FlagButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      // style: ButtonStyle(
-      //     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-      //         const RoundedRectangleBorder(
-      //             borderRadius: BorderRadius.zero,
-      //             side: BorderSide(color: Colors.black)))),
       onTap: () {
         _setLocale(languageCode);
       },
