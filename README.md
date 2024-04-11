@@ -1,6 +1,6 @@
 # appdemo
 
-A new Flutter project.
+Mobile app for sales agent at international restaurant.
 
 ## Getting Started
 
