@@ -8,11 +8,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
   flutter_localization:
   cupertino_icons: ^1.0.6
-
   curved_navigation_bar:
+  sqflite:
+  path:
+  math_expressions:
 
 dev_dependencies:
   flutter_test:

@@ -5,7 +5,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'items_page.dart';
-import 'profile_page.dart';
+import 'calculator_page.dart';
 
 class AdminPage extends StatefulWidget {
   const AdminPage({super.key});
@@ -21,7 +21,7 @@ class _AdminPageState extends State<AdminPage> {
     const TablePage(),
     const ItemsPage(),
     const OrderPage(),
-    const ProfilePage(),
+    const CalculatorPage(),
     const StatsPage(),
   ];
 

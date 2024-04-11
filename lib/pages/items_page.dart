@@ -1,9 +1,8 @@
 import 'package:appdemo/widgets/item_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 
+import '../database.dart';
 import '../localization/locales.dart';
 
 class ItemsPage extends StatefulWidget {
@@ -18,69 +17,114 @@ class _ItemsPageState extends State<ItemsPage> {
     Item(
         image: Image.asset('assets/items/garlicbread.jpg'),
         name: 'Garlic Bread',
-        price: 1.5),
+        price: 1.5,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/pancake.jpg'),
         name: 'Pancake',
-        price: 2),
+        price: 2,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/eggsbenedict.jpg'),
         name: 'Eggs Benedict',
-        price: 2.5),
+        price: 2.5,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/sandwich.jpg'),
         name: 'Sandwich',
-        price: 3),
+        price: 3,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
   ];
 
   final List<Item> lunch = [
     Item(
         image: Image.asset('assets/items/mashedpotatoes.jpg'),
         name: 'Mashed Potatoes',
-        price: 2.5),
+        price: 2.5,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/salad.jpg'),
         name: 'Russian Salad',
-        price: 5),
+        price: 5,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/spaghetti.jpg'),
         name: 'Spaghetti',
-        price: 6.5),
+        price: 6.5,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/hamburger.jpg'),
         name: 'Hamburger',
-        price: 7.5),
+        price: 7.5,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/steak.jpg'),
         name: 'Beef Steak',
-        price: 8),
+        price: 8,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/pizza.jpg'),
         name: 'Pizza',
-        price: 12.5),
+        price: 12.5,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
   ];
 
   final List<Item> dinner = [
     Item(
         image: Image.asset('assets/items/garlicsoup.jpg'),
         name: 'Garlic Soup',
-        price: 2.5),
+        price: 2.5,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/cheesebakedpotatoes.jpg'),
         name: 'Cheese Baked Potatoes',
-        price: 3),
+        price: 3,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/beefstewwithvegetables.jpg'),
         name: 'Beef Stew With Vegetables',
-        price: 10),
+        price: 10,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/salmonwithpassionfruitsauce.jpg'),
         name: 'Salmon With Passion Fruit Sauce',
-        price: 14.5),
+        price: 14.5,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
     Item(
         image: Image.asset('assets/items/bakedchicken.jpg'),
         name: 'Baked Chicken',
-        price: 15),
+        price: 15,
+        id: 0,
+        groupId: 0,
+        takeaway: 0),
   ];
 
   @override
@@ -155,12 +199,4 @@ class _ItemsPageState extends State<ItemsPage> {
       ),
     );
   }
-}
-
-class Item {
-  final Image image;
-  final String name;
-  final double price;
-
-  Item({required this.image, required this.name, required this.price});
 }

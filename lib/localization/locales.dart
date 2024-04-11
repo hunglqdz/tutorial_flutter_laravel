@@ -13,7 +13,7 @@ mixin LocaleData {
   static const String table = 'table';
   static const String items = "items";
   static const String order = "order";
-  static const String profile = "profile";
+  static const String calculator = "calculator";
   static const String stats = 'stats';
   static const String breakfast = "breakfast";
   static const String lunch = "lunch";
@@ -26,7 +26,7 @@ mixin LocaleData {
     table: 'Table',
     items: 'Items',
     order: 'Order',
-    profile: 'Profile',
+    calculator: 'Calculator',
     stats: 'Stats',
     breakfast: 'Breakfast',
     lunch: 'Lunch',
@@ -40,7 +40,7 @@ mixin LocaleData {
     table: 'Bàn',
     items: 'Món ăn',
     order: 'Đặt hàng',
-    profile: 'Hồ sơ',
+    calculator: 'Máy tính',
     stats: 'Thống kê',
     breakfast: 'Bữa sáng',
     lunch: 'Bữa trưa',
@@ -54,7 +54,7 @@ mixin LocaleData {
     table: 'Tisch',
     items: 'Artikel',
     order: 'Befehl',
-    profile: 'Profil',
+    calculator: 'Taschenrechner',
     stats: 'Statistiken',
     breakfast: 'Frühstück',
     lunch: 'Mittagessen',
