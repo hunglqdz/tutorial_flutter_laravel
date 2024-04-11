@@ -15,6 +15,9 @@ mixin LocaleData {
   static const String order = "order";
   static const String profile = "profile";
   static const String stats = 'stats';
+  static const String breakfast = "breakfast";
+  static const String lunch = "lunch";
+  static const String dinner = 'dinner';
 
   static const Map<String, dynamic> EN = {
     language: 'English',
@@ -24,7 +27,10 @@ mixin LocaleData {
     items: 'Items',
     order: 'Order',
     profile: 'Profile',
-    stats: 'Stats'
+    stats: 'Stats',
+    breakfast: 'Breakfast',
+    lunch: 'Lunch',
+    dinner: 'Dinner',
   };
 
   static const Map<String, dynamic> VI = {
@@ -35,7 +41,10 @@ mixin LocaleData {
     items: 'Món ăn',
     order: 'Đặt hàng',
     profile: 'Hồ sơ',
-    stats: 'Thống kê'
+    stats: 'Thống kê',
+    breakfast: 'Bữa sáng',
+    lunch: 'Bữa trưa',
+    dinner: 'Bữa tối',
   };
 
   static const Map<String, dynamic> DE = {
@@ -46,6 +55,9 @@ mixin LocaleData {
     items: 'Artikel',
     order: 'Befehl',
     profile: 'Profil',
-    stats: 'Statistiken'
+    stats: 'Statistiken',
+    breakfast: 'Frühstück',
+    lunch: 'Mittagessen',
+    dinner: 'Abendessen',
   };
 }

@@ -1,4 +1,7 @@
+import 'package:appdemo/widgets/item_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 
 import '../localization/locales.dart';
@@ -11,57 +14,73 @@ class ItemsPage extends StatefulWidget {
 }
 
 class _ItemsPageState extends State<ItemsPage> {
-  final List<Item> items = [
+  final List<Item> breakfast = [
     Item(
-        image: Image.asset('assets/items/pizza.png'),
-        name: 'Pizza',
-        description: 'Melting cheese with different types of meat',
-        price: 15),
-    Item(
-        image: Image.asset('assets/items/burger.png'),
-        name: 'Burger',
-        description: 'Beef, chicken with BBQ source',
-        price: 10),
-    Item(
-        image: Image.asset('assets/items/steak.png'),
-        name: 'Steak',
-        description: 'Served with fried eggs and french fries',
-        price: 9),
-    Item(
-        image: Image.asset('assets/items/pasta.png'),
-        name: 'Pasta',
-        description: 'From Italy?',
-        price: 6.5),
-    Item(
-        image: Image.asset('assets/items/salad.png'),
-        name: 'Salad',
-        description: 'Not only for vegetarians',
-        price: 3),
-    Item(
-        image: Image.asset('assets/items/beer.png'),
-        name: 'Beer',
-        description: 'Cool down',
-        price: 2),
-    Item(
-        image: Image.asset('assets/items/soft-drink.png'),
-        name: 'Soft drink',
-        description: 'Coca, Sprite, Fanta',
+        image: Image.asset('assets/items/garlicbread.jpg'),
+        name: 'Garlic Bread',
         price: 1.5),
     Item(
-        image: Image.asset('assets/items/coffee.png'),
-        name: 'Coffee',
-        description: 'Source for energy',
-        price: 1),
+        image: Image.asset('assets/items/pancake.jpg'),
+        name: 'Pancake',
+        price: 2),
     Item(
-        image: Image.asset('assets/items/tea.png'),
-        name: 'Tea',
-        description: 'Green or herbal',
-        price: 1),
+        image: Image.asset('assets/items/eggsbenedict.jpg'),
+        name: 'Eggs Benedict',
+        price: 2.5),
     Item(
-        image: Image.asset('assets/items/water.png'),
-        name: 'Water',
-        description: 'Healthy!',
-        price: 0.5),
+        image: Image.asset('assets/items/sandwich.jpg'),
+        name: 'Sandwich',
+        price: 3),
+  ];
+
+  final List<Item> lunch = [
+    Item(
+        image: Image.asset('assets/items/mashedpotatoes.jpg'),
+        name: 'Mashed Potatoes',
+        price: 2.5),
+    Item(
+        image: Image.asset('assets/items/salad.jpg'),
+        name: 'Russian Salad',
+        price: 5),
+    Item(
+        image: Image.asset('assets/items/spaghetti.jpg'),
+        name: 'Spaghetti',
+        price: 6.5),
+    Item(
+        image: Image.asset('assets/items/hamburger.jpg'),
+        name: 'Hamburger',
+        price: 7.5),
+    Item(
+        image: Image.asset('assets/items/steak.jpg'),
+        name: 'Beef Steak',
+        price: 8),
+    Item(
+        image: Image.asset('assets/items/pizza.jpg'),
+        name: 'Pizza',
+        price: 12.5),
+  ];
+
+  final List<Item> dinner = [
+    Item(
+        image: Image.asset('assets/items/garlicsoup.jpg'),
+        name: 'Garlic Soup',
+        price: 2.5),
+    Item(
+        image: Image.asset('assets/items/cheesebakedpotatoes.jpg'),
+        name: 'Cheese Baked Potatoes',
+        price: 3),
+    Item(
+        image: Image.asset('assets/items/beefstewwithvegetables.jpg'),
+        name: 'Beef Stew With Vegetables',
+        price: 10),
+    Item(
+        image: Image.asset('assets/items/salmonwithpassionfruitsauce.jpg'),
+        name: 'Salmon With Passion Fruit Sauce',
+        price: 14.5),
+    Item(
+        image: Image.asset('assets/items/bakedchicken.jpg'),
+        name: 'Baked Chicken',
+        price: 15),
   ];
 
   @override
@@ -73,16 +92,66 @@ class _ItemsPageState extends State<ItemsPage> {
         leading: const Icon(Icons.menu),
         actions: const [Icon(Icons.notifications)],
       ),
-      body: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text(items[index].name),
-            subtitle: Text(items[index].description),
-            leading: items[index].image,
-            trailing: Text('\$${items[index].price.toString()}'),
-          );
-        },
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(
+              LocaleData.breakfast.getString(context),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
+          ),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: breakfast.length,
+            itemBuilder: (context, index) {
+              return ItemWidget(
+                name: breakfast[index].name,
+                price: breakfast[index].price,
+                image: breakfast[index].image,
+              );
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(
+              LocaleData.lunch.getString(context),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
+          ),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: lunch.length,
+            itemBuilder: (context, index) {
+              return ItemWidget(
+                name: lunch[index].name,
+                price: lunch[index].price,
+                image: lunch[index].image,
+              );
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(
+              LocaleData.dinner.getString(context),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
+          ),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: dinner.length,
+            itemBuilder: (context, index) {
+              return ItemWidget(
+                name: dinner[index].name,
+                price: dinner[index].price,
+                image: dinner[index].image,
+              );
+            },
+          ),
+        ],
       ),
     );
   }
@@ -91,12 +160,7 @@ class _ItemsPageState extends State<ItemsPage> {
 class Item {
   final Image image;
   final String name;
-  final String description;
   final double price;
 
-  Item(
-      {required this.image,
-      required this.name,
-      required this.description,
-      required this.price});
+  Item({required this.image, required this.name, required this.price});
 }

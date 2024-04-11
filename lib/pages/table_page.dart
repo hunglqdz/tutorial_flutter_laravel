@@ -28,7 +28,7 @@ class _TablePageState extends State<TablePage> {
             children: [
               Column(
                 children: [
-                  Text('15',
+                  Text('30',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -42,7 +42,7 @@ class _TablePageState extends State<TablePage> {
               ),
               Column(
                 children: [
-                  Text('5',
+                  Text('20',
                       style: TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
