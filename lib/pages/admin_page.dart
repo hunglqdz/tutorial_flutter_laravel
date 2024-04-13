@@ -29,7 +29,7 @@ class _AdminPageState extends State<AdminPage> {
     const Icon(Icons.table_restaurant, size: 30),
     const Icon(Icons.fastfood, size: 30),
     const Icon(Icons.food_bank, size: 30),
-    const Icon(Icons.person, size: 30),
+    const Icon(Icons.calculate, size: 30),
     const Icon(Icons.bar_chart, size: 30),
   ];
 
