@@ -1,0 +1,130 @@
+import 'package:flutter/material.dart';
+
+import 'item.dart';
+
+class Restaurant extends ChangeNotifier {
+  final List<Item> _menu = [
+    Item(
+        imagePath: 'assets/items/appetizer/garlicbread.jpg',
+        name: 'Garlic Bread',
+        price: 1.5,
+        id: 0,
+        takeaway: 1.5,
+        category: ItemCategory.appetizer,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/dessert/pancake.jpg',
+        name: 'Pancake',
+        price: 2,
+        id: 0,
+        takeaway: 2,
+        category: ItemCategory.dessert,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/main/eggsbenedict.jpg',
+        name: 'Eggs Benedict',
+        price: 2.5,
+        id: 0,
+        takeaway: 2.5,
+        category: ItemCategory.main,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/main/sandwich.jpg',
+        name: 'Sandwich',
+        price: 3,
+        id: 0,
+        takeaway: 3,
+        category: ItemCategory.main,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/side/mashedpotatoes.jpg',
+        name: 'Mashed Potatoes',
+        price: 2.5,
+        id: 0,
+        takeaway: 2.5,
+        category: ItemCategory.side,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/side/salad.jpg',
+        name: 'Salad',
+        price: 5,
+        id: 0,
+        takeaway: 5,
+        category: ItemCategory.side,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/main/spaghetti.jpg',
+        name: 'Spaghetti',
+        price: 6.5,
+        id: 0,
+        takeaway: 6.5,
+        category: ItemCategory.main,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/main/hamburger.jpg',
+        name: 'Hamburger',
+        price: 7.5,
+        id: 0,
+        takeaway: 7.5,
+        category: ItemCategory.main,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/main/steak.jpg',
+        name: 'Steak',
+        price: 8,
+        id: 0,
+        takeaway: 8,
+        category: ItemCategory.main,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/main/pizza.jpg',
+        name: 'Pizza',
+        price: 12.5,
+        id: 0,
+        takeaway: 12.5,
+        category: ItemCategory.main,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/appetizer/garlicsoup.jpg',
+        name: 'Garlic Soup',
+        price: 2.5,
+        id: 0,
+        takeaway: 2.5,
+        category: ItemCategory.appetizer,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/side/cheesebakedpotatoes.jpg',
+        name: 'Cheese Baked Potatoes',
+        price: 3,
+        id: 0,
+        takeaway: 3,
+        category: ItemCategory.side,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/main/beefstewwithvegetables.jpg',
+        name: 'Beef Stew With Vegetables',
+        price: 10,
+        id: 0,
+        takeaway: 10,
+        category: ItemCategory.main,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/main/salmonwithpassionfruitsauce.jpg',
+        name: 'Salmon With Passion Fruit Sauce',
+        price: 14.5,
+        id: 0,
+        takeaway: 14.5,
+        category: ItemCategory.main,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/main/bakedchicken.jpg',
+        name: 'Baked Chicken',
+        price: 15,
+        id: 0,
+        takeaway: 15,
+        category: ItemCategory.main,
+        availableAddons: []),
+  ];
+
+  List<Item> get menu => _menu;
+}

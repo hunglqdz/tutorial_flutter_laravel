@@ -1,9 +1,8 @@
-import 'package:appdemo/widgets/item_widget.dart';
+import 'package:appdemo/models/item.dart';
+import 'package:appdemo/models/restaurant.dart';
+import 'package:appdemo/widgets/my_tabbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localization/flutter_localization.dart';
-
-import '../database.dart';
-import '../localization/locales.dart';
+import 'package:provider/provider.dart';
 
 class ItemsPage extends StatefulWidget {
   const ItemsPage({super.key});
@@ -12,190 +11,119 @@ class ItemsPage extends StatefulWidget {
   State<ItemsPage> createState() => _ItemsPageState();
 }
 
-class _ItemsPageState extends State<ItemsPage> {
-  final List<Item> breakfast = [
-    Item(
-        image: Image.asset('assets/items/garlicbread.jpg'),
-        name: 'Garlic Bread',
-        price: 1.5,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/pancake.jpg'),
-        name: 'Pancake',
-        price: 2,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/eggsbenedict.jpg'),
-        name: 'Eggs Benedict',
-        price: 2.5,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/sandwich.jpg'),
-        name: 'Sandwich',
-        price: 3,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-  ];
+class _ItemsPageState extends State<ItemsPage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
 
-  final List<Item> lunch = [
-    Item(
-        image: Image.asset('assets/items/mashedpotatoes.jpg'),
-        name: 'Mashed Potatoes',
-        price: 2.5,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/salad.jpg'),
-        name: 'Russian Salad',
-        price: 5,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/spaghetti.jpg'),
-        name: 'Spaghetti',
-        price: 6.5,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/hamburger.jpg'),
-        name: 'Hamburger',
-        price: 7.5,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/steak.jpg'),
-        name: 'Beef Steak',
-        price: 8,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/pizza.jpg'),
-        name: 'Pizza',
-        price: 12.5,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _tabController =
+        TabController(length: ItemCategory.values.length, vsync: this);
+  }
 
-  final List<Item> dinner = [
-    Item(
-        image: Image.asset('assets/items/garlicsoup.jpg'),
-        name: 'Garlic Soup',
-        price: 2.5,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/cheesebakedpotatoes.jpg'),
-        name: 'Cheese Baked Potatoes',
-        price: 3,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/beefstewwithvegetables.jpg'),
-        name: 'Beef Stew With Vegetables',
-        price: 10,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/salmonwithpassionfruitsauce.jpg'),
-        name: 'Salmon With Passion Fruit Sauce',
-        price: 14.5,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-    Item(
-        image: Image.asset('assets/items/bakedchicken.jpg'),
-        name: 'Baked Chicken',
-        price: 15,
-        id: 0,
-        groupId: 0,
-        takeaway: 0),
-  ];
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  List<Item> _filterMenuByCategory(ItemCategory category, List<Item> fullMenu) {
+    return fullMenu.where((item) => item.category == category).toList();
+  }
+
+  List<Widget> getItemInThisCategory(List<Item> fullMenu) {
+    return ItemCategory.values.map((category) {
+      List<Item> categoryMenu = _filterMenuByCategory(category, fullMenu);
+      return ListView.builder(
+        itemCount: categoryMenu.length,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(categoryMenu[index].name),
+          );
+        },
+      );
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(LocaleData.items.getString(context)),
-        centerTitle: true,
-        leading: const Icon(Icons.menu),
-        actions: const [Icon(Icons.notifications)],
-      ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              LocaleData.breakfast.getString(context),
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) =>
+              [AppBar(title: MyTabBar(tabController: _tabController))],
+          body: Consumer<Restaurant>(
+            builder: (context, restaurant, child) => TabBarView(
+              controller: _tabController,
+              children: getItemInThisCategory(restaurant.menu),
             ),
           ),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: breakfast.length,
-            itemBuilder: (context, index) {
-              return ItemWidget(
-                name: breakfast[index].name,
-                price: breakfast[index].price,
-                image: breakfast[index].image,
-              );
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              LocaleData.lunch.getString(context),
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-            ),
-          ),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: lunch.length,
-            itemBuilder: (context, index) {
-              return ItemWidget(
-                name: lunch[index].name,
-                price: lunch[index].price,
-                image: lunch[index].image,
-              );
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              LocaleData.dinner.getString(context),
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-            ),
-          ),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: dinner.length,
-            itemBuilder: (context, index) {
-              return ItemWidget(
-                name: dinner[index].name,
-                price: dinner[index].price,
-                image: dinner[index].image,
-              );
-            },
-          ),
-        ],
+        ),
+        // body: ListView(
+        //   children: [
+        //     Padding(
+        //       padding: const EdgeInsets.all(16),
+        //       child: Text(
+        //         LocaleData.breakfast.getString(context),
+        //         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+        //       ),
+        //     ),
+        // ListView.builder(
+        //   shrinkWrap: true,
+        //   physics: const NeverScrollableScrollPhysics(),
+        //   itemCount: breakfast.length,
+        //   itemBuilder: (context, index) {
+        //     return ItemWidget(
+        //       name: breakfast[index].name,
+        //       price: breakfast[index].price,
+        //       image: breakfast[index].image,
+        //     );
+        //   },
+        // ),
+        //     Padding(
+        //       padding: const EdgeInsets.all(16),
+        //       child: Text(
+        //         LocaleData.lunch.getString(context),
+        //         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+        //       ),
+        //     ),
+        //     ListView.builder(
+        //       shrinkWrap: true,
+        //       physics: const NeverScrollableScrollPhysics(),
+        //       itemCount: lunch.length,
+        //       itemBuilder: (context, index) {
+        //         return ItemWidget(
+        //           name: lunch[index].name,
+        //           price: lunch[index].price,
+        //           image: lunch[index].image,
+        //         );
+        //       },
+        //     ),
+        //     Padding(
+        //       padding: const EdgeInsets.all(16),
+        //       child: Text(
+        //         LocaleData.dinner.getString(context),
+        //         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+        //       ),
+        //     ),
+        //     ListView.builder(
+        //       shrinkWrap: true,
+        //       physics: const NeverScrollableScrollPhysics(),
+        //       itemCount: dinner.length,
+        //       itemBuilder: (context, index) {
+        //         return ItemWidget(
+        //           name: dinner[index].name,
+        //           price: dinner[index].price,
+        //           image: dinner[index].image,
+        //         );
+        //       },
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }

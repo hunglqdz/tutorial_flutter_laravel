@@ -1,4 +1,4 @@
-import 'package:appdemo/widgets/button.dart';
+import 'package:appdemo/widgets/my_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:math_expressions/math_expressions.dart';
@@ -43,6 +43,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(LocaleData.calculator.getString(context)),
         centerTitle: true,
         leading: const Icon(Icons.menu),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  final Color color;
+  final color;
   final Color textColor;
   final String buttonText;
   final Function() buttonTapped;
 
   const MyButton(
       {super.key,
-      required this.color,
+      this.color,
       required this.textColor,
       required this.buttonText,
       required this.buttonTapped});

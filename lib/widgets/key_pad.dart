@@ -86,7 +86,7 @@ class KeyPad extends StatelessWidget {
 
   buttonWidget(String buttonText) {
     return Container(
-      color: const Color.fromARGB(255, 222, 222, 222),
+      color: Colors.grey.shade100,
       height: 45,
       width: 90,
       child: TextButton(
@@ -112,7 +112,7 @@ class KeyPad extends StatelessWidget {
 
   functionButtonWidget(String buttonText, Function() function) {
     return Container(
-      color: const Color.fromARGB(255, 222, 222, 222),
+      color: Colors.grey.shade100,
       height: 45,
       width: 90,
       child: TextButton(

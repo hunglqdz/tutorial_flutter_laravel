@@ -1,40 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
-import 'package:flutter/material.dart';
-
 class ItemGroup {
   int id;
   String name;
   ItemGroup({
     required this.id,
-    required this.name,
-  });
-}
-
-class Item {
-  int id;
-  int groupId;
-  Image image;
-  String name;
-  double price;
-  double takeaway;
-  Item({
-    required this.id,
-    required this.groupId,
-    required this.image,
-    required this.name,
-    required this.price,
-    required this.takeaway,
-  });
-}
-
-class SideDish {
-  int id;
-  int itemId;
-  String name;
-  SideDish({
-    required this.id,
-    required this.itemId,
     required this.name,
   });
 }

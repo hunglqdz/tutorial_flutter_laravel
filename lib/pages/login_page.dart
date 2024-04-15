@@ -23,9 +23,10 @@ class _LoginPageState extends State {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
-        title: Text(LocaleData.hello.getString(context)),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(LocaleData.login.getString(context)),
       ),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Builder(
         builder: (context) => Center(
           child: Column(
@@ -35,9 +36,9 @@ class _LoginPageState extends State {
                 padding: const EdgeInsets.only(left: 50, bottom: 15),
                 child: Row(
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.key,
-                      color: Colors.orange,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                     Text(
                       LocaleData.password.getString(context),
@@ -50,8 +51,8 @@ class _LoginPageState extends State {
                 padding: const EdgeInsets.only(left: 50, right: 50, bottom: 15),
                 child: Container(
                   width: 300,
-                  decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 222, 222, 222)),
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.tertiary),
                   child: Padding(
                     padding: const EdgeInsets.all(15),
                     child: Text(

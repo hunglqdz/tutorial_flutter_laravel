@@ -10,6 +10,7 @@ class StatsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(LocaleData.stats.getString(context)),
         centerTitle: true,
         leading: const Icon(Icons.menu),
