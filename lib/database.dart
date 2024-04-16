@@ -27,25 +27,6 @@ class Table {
   });
 }
 
-class Bill {
-  int id;
-  DateTime dateTime;
-  int tableId;
-  double total;
-  double discount;
-  bool status;
-  bool sync;
-  Bill({
-    required this.id,
-    required this.dateTime,
-    required this.tableId,
-    required this.total,
-    required this.discount,
-    required this.status,
-    required this.sync,
-  });
-}
-
 class Payment {
   int id;
   int billId;
@@ -61,6 +42,26 @@ class Payment {
     required this.total,
     required this.discount,
     required this.method,
+    required this.sync,
+  });
+}
+
+class Bill {
+  int id;
+  DateTime dateTime;
+  int tableId;
+  double total;
+  double discount;
+  bool status;
+  bool sync;
+
+  Bill({
+    required this.id,
+    required this.dateTime,
+    required this.tableId,
+    required this.total,
+    required this.discount,
+    required this.status,
     required this.sync,
   });
 }

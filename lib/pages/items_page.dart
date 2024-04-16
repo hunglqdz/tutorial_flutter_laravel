@@ -1,8 +1,12 @@
+import 'package:appdemo/localization/locales.dart';
 import 'package:appdemo/models/item.dart';
 import 'package:appdemo/models/restaurant.dart';
-import 'package:appdemo/widgets/my_tabbar.dart';
+import 'package:appdemo/widgets/item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:provider/provider.dart';
+
+import 'detail_page.dart';
 
 class ItemsPage extends StatefulWidget {
   const ItemsPage({super.key});
@@ -36,11 +40,18 @@ class _ItemsPageState extends State<ItemsPage>
     return ItemCategory.values.map((category) {
       List<Item> categoryMenu = _filterMenuByCategory(category, fullMenu);
       return ListView.builder(
+        padding: EdgeInsets.zero,
         itemCount: categoryMenu.length,
-        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(categoryMenu[index].name),
+          final item = categoryMenu[index];
+          return ItemWidget(
+            item: item,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailPage(item: item),
+              ),
+            ),
           );
         },
       );
@@ -53,77 +64,46 @@ class _ItemsPageState extends State<ItemsPage>
       length: 5,
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
-        body: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) =>
-              [AppBar(title: MyTabBar(tabController: _tabController))],
-          body: Consumer<Restaurant>(
-            builder: (context, restaurant, child) => TabBarView(
-              controller: _tabController,
-              children: getItemInThisCategory(restaurant.menu),
-            ),
+        // body: NestedScrollView(
+        //   headerSliverBuilder: (context, innerBoxIsScrolled) =>
+        //       [AppBar(title: MyTabBar(tabController: _tabController))],
+        // body: Consumer<Restaurant>(
+        //   builder: (context, restaurant, child) => TabBarView(
+        //     controller: _tabController,
+        //     children: getItemInThisCategory(restaurant.menu),
+        //   ),
+        // ),
+        // ),
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          title: Text(LocaleData.items.getString(context)),
+          centerTitle: true,
+          leading: const Icon(Icons.menu),
+          actions: const [Icon(Icons.shopping_cart)],
+          bottom: TabBar(
+            tabAlignment: TabAlignment.start,
+            isScrollable: true,
+            controller: _tabController,
+            indicatorWeight: 5,
+            labelStyle: const TextStyle(fontSize: 20),
+            labelPadding: const EdgeInsets.symmetric(horizontal: 10),
+            labelColor: Colors.black,
+            unselectedLabelColor: Colors.grey,
+            tabs: [
+              Tab(text: LocaleData.appetizer.getString(context)),
+              Tab(text: LocaleData.main.getString(context)),
+              Tab(text: LocaleData.side.getString(context)),
+              Tab(text: LocaleData.dessert.getString(context)),
+              Tab(text: LocaleData.beverage.getString(context)),
+            ],
           ),
         ),
-        // body: ListView(
-        //   children: [
-        //     Padding(
-        //       padding: const EdgeInsets.all(16),
-        //       child: Text(
-        //         LocaleData.breakfast.getString(context),
-        //         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-        //       ),
-        //     ),
-        // ListView.builder(
-        //   shrinkWrap: true,
-        //   physics: const NeverScrollableScrollPhysics(),
-        //   itemCount: breakfast.length,
-        //   itemBuilder: (context, index) {
-        //     return ItemWidget(
-        //       name: breakfast[index].name,
-        //       price: breakfast[index].price,
-        //       image: breakfast[index].image,
-        //     );
-        //   },
-        // ),
-        //     Padding(
-        //       padding: const EdgeInsets.all(16),
-        //       child: Text(
-        //         LocaleData.lunch.getString(context),
-        //         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-        //       ),
-        //     ),
-        //     ListView.builder(
-        //       shrinkWrap: true,
-        //       physics: const NeverScrollableScrollPhysics(),
-        //       itemCount: lunch.length,
-        //       itemBuilder: (context, index) {
-        //         return ItemWidget(
-        //           name: lunch[index].name,
-        //           price: lunch[index].price,
-        //           image: lunch[index].image,
-        //         );
-        //       },
-        //     ),
-        //     Padding(
-        //       padding: const EdgeInsets.all(16),
-        //       child: Text(
-        //         LocaleData.dinner.getString(context),
-        //         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-        //       ),
-        //     ),
-        //     ListView.builder(
-        //       shrinkWrap: true,
-        //       physics: const NeverScrollableScrollPhysics(),
-        //       itemCount: dinner.length,
-        //       itemBuilder: (context, index) {
-        //         return ItemWidget(
-        //           name: dinner[index].name,
-        //           price: dinner[index].price,
-        //           image: dinner[index].image,
-        //         );
-        //       },
-        //     ),
-        //   ],
-        // ),
+        body: Consumer<Restaurant>(
+          builder: (context, restaurant, child) => TabBarView(
+            controller: _tabController,
+            children: getItemInThisCategory(restaurant.menu),
+          ),
+        ),
       ),
     );
   }

@@ -117,7 +117,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     });
                   },
                   buttonText: buttons[index],
-                  color: Colors.orange,
+                  color: Colors.deepOrange,
                   textColor: Colors.white,
                 );
               } else {
@@ -129,11 +129,10 @@ class _CalculatorPageState extends State<CalculatorPage> {
                   },
                   buttonText: buttons[index],
                   color: isOperator(buttons[index])
-                      ? Colors.deepOrange
-                      : Colors.deepOrange[50],
-                  textColor: isOperator(buttons[index])
-                      ? Colors.white
-                      : Colors.deepOrange,
+                      ? Colors.orange
+                      : Colors.orange[50],
+                  textColor:
+                      isOperator(buttons[index]) ? Colors.white : Colors.orange,
                 );
               }
             },

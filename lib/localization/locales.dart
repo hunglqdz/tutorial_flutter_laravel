@@ -23,6 +23,7 @@ mixin LocaleData {
   static const String side = 'side';
   static const String dessert = "dessert";
   static const String beverage = "beverage";
+  static const String addtocart = "addtocart";
 
   static const Map<String, dynamic> EN = {
     language: 'English',
@@ -41,6 +42,7 @@ mixin LocaleData {
     side: 'Side',
     dessert: 'Dessert',
     beverage: 'Beverage',
+    addtocart: 'Add to cart',
   };
 
   static const Map<String, dynamic> VI = {
@@ -60,6 +62,7 @@ mixin LocaleData {
     side: 'Ăn kèm',
     dessert: 'Tráng miệng',
     beverage: 'Đồ uống',
+    addtocart: 'Thêm vào giỏ hàng',
   };
 
   static const Map<String, dynamic> DE = {
@@ -79,5 +82,6 @@ mixin LocaleData {
     side: 'Gericht zusammen',
     dessert: 'Nachspeisen',
     beverage: 'Getränk',
+    addtocart: 'in den Warenkorb legen',
   };
 }

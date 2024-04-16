@@ -51,7 +51,7 @@ class Restaurant extends ChangeNotifier {
         id: 0,
         takeaway: 5,
         category: ItemCategory.side,
-        availableAddons: []),
+        availableAddons: [Addon(id: 0, name: 'Boiled Egg')]),
     Item(
         imagePath: 'assets/items/main/spaghetti.jpg',
         name: 'Spaghetti',
@@ -75,7 +75,7 @@ class Restaurant extends ChangeNotifier {
         id: 0,
         takeaway: 8,
         category: ItemCategory.main,
-        availableAddons: []),
+        availableAddons: [Addon(id: 0, name: 'French Fries')]),
     Item(
         imagePath: 'assets/items/main/pizza.jpg',
         name: 'Pizza',
@@ -83,7 +83,7 @@ class Restaurant extends ChangeNotifier {
         id: 0,
         takeaway: 12.5,
         category: ItemCategory.main,
-        availableAddons: []),
+        availableAddons: [Addon(id: 0, name: 'Powdered cheese')]),
     Item(
         imagePath: 'assets/items/appetizer/garlicsoup.jpg',
         name: 'Garlic Soup',
@@ -124,6 +124,22 @@ class Restaurant extends ChangeNotifier {
         takeaway: 15,
         category: ItemCategory.main,
         availableAddons: []),
+    Item(
+        imagePath: 'assets/items/beverage/wine.jpg',
+        name: 'Wine',
+        price: 20,
+        id: 0,
+        takeaway: 20,
+        category: ItemCategory.beverage,
+        availableAddons: []),
+    Item(
+        imagePath: 'assets/items/beverage/beer.jpg',
+        name: 'Beer',
+        price: 5,
+        id: 0,
+        takeaway: 5,
+        category: ItemCategory.beverage,
+        availableAddons: [Addon(id: 0, name: 'Boiled Peanuts')]),
   ];
 
   List<Item> get menu => _menu;
