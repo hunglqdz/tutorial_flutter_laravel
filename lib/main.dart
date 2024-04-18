@@ -1,6 +1,5 @@
 import 'package:appdemo/localization/locales.dart';
 import 'package:appdemo/models/restaurant.dart';
-import 'package:appdemo/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:provider/provider.dart';
@@ -12,9 +11,6 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => ThemeProvider(),
-        ),
         ChangeNotifierProvider(
           create: (context) => Restaurant(),
         ),
@@ -48,7 +44,6 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: localization.supportedLocales,
       localizationsDelegates: localization.localizationsDelegates,
       home: const LoginPage(),
-      theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
 

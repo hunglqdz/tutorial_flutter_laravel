@@ -1,4 +1,4 @@
-import 'package:appdemo/widgets/table_widget.dart';
+import 'package:appdemo/widgets/my_table.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 
@@ -16,103 +16,90 @@ class _TablePageState extends State<TablePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Colors.orange,
         title: Text(LocaleData.table.getString(context)),
         centerTitle: true,
         leading: const Icon(Icons.menu),
-        actions: const [Icon(Icons.notifications)],
       ),
       body: Column(
         children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  Text('30',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      )),
-                  Text('All',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      )),
-                ],
-              ),
-              Column(
-                children: [
-                  Text('20',
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20)),
-                  Text('Free',
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20)),
-                ],
-              ),
-              Column(
-                children: [
-                  Text('10',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20)),
-                  Text('Reserved',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20)),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Container(
-            color: Colors.orangeAccent,
-            width: 300,
-            height: 350,
-            child: Column(
+          const Padding(
+            padding: EdgeInsets.all(15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Text(
-                  'Select Table',
-                  style: TextStyle(color: Colors.grey),
+                Column(
+                  children: [
+                    Text('30',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        )),
+                    Text('All',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        )),
+                  ],
                 ),
-                Expanded(
-                  child: Scrollbar(
-                    thumbVisibility: true,
-                    trackVisibility: true,
-                    interactive: true,
-                    thickness: 5,
-                    child: GridView.count(
-                      shrinkWrap: true,
-                      crossAxisCount: 3,
-                      children: List.generate(30, (index) {
-                        return TableWidget(index: index);
-                      }),
-                    ),
-                  ),
+                Column(
+                  children: [
+                    Text('20',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20)),
+                    Text('Free',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20)),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text('10',
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20)),
+                    Text('Reserved',
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20)),
+                  ],
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 20),
-          const Text('Summary: 120.25'),
-          const SizedBox(height: 20),
-          ElevatedButton.icon(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-            label: const Text('view'),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton.icon(
-            onPressed: () {},
-            icon: const Icon(Icons.payment),
-            label: const Text('payment'),
+          Container(
+            color: Colors.orangeAccent,
+            width: 300,
+            height: 400,
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: Column(
+                children: [
+                  const Text('Select Table'),
+                  Expanded(
+                    child: Scrollbar(
+                      thumbVisibility: true,
+                      trackVisibility: true,
+                      interactive: true,
+                      thickness: 5,
+                      child: GridView.count(
+                        shrinkWrap: true,
+                        crossAxisCount: 3,
+                        children: List.generate(30, (index) {
+                          return MyTable(index: index + 1);
+                        }),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

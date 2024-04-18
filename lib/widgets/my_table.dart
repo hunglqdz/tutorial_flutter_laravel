@@ -4,29 +4,45 @@ import 'package:flutter_localization/flutter_localization.dart';
 
 import '../localization/locales.dart';
 
-class TableWidget extends StatelessWidget {
+class MyTable extends StatefulWidget {
   int index;
-
-  TableWidget({
+  MyTable({
     super.key,
     required this.index,
   });
 
   @override
+  State<MyTable> createState() => _MyTableState();
+}
+
+class _MyTableState extends State<MyTable> {
+  Color tableColor = Colors.white;
+
+  void changeColor() {
+    setState(() {
+      if (tableColor == Colors.white) {
+        tableColor = Colors.blueAccent;
+      } else {
+        tableColor = Colors.white;
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: changeColor,
       child: Container(
         margin: const EdgeInsets.all(10),
         width: 90,
         height: 90,
-        color: Colors.white,
+        color: tableColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(LocaleData.table.getString(context)),
             Text(
-              '$index',
+              '${widget.index}',
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             )
           ],

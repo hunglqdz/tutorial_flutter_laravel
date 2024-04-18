@@ -1,4 +1,4 @@
-import 'package:appdemo/widgets/order_widget.dart';
+import 'package:appdemo/widgets/my_order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 
@@ -65,7 +65,7 @@ class OrderPage extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemCount: 10,
-              itemBuilder: (context, index) => const OrderWidget(),
+              itemBuilder: (context, index) => const MyOrder(),
             ),
           ),
         ],

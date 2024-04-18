@@ -1,11 +1,11 @@
 import 'package:appdemo/models/item.dart';
 import 'package:flutter/material.dart';
 
-class ItemWidget extends StatelessWidget {
+class MyItem extends StatelessWidget {
   final Item item;
   final void Function()? onTap;
 
-  const ItemWidget({super.key, required this.item, this.onTap});
+  const MyItem({super.key, required this.item, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class ItemWidget extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(item.imagePath, height: 120, width: 200),
+                  child: Image.asset(item.imagePath, height: 120, width: 160),
                 ),
                 const SizedBox(width: 15),
                 Expanded(
@@ -27,13 +27,13 @@ class ItemWidget extends StatelessWidget {
                     children: [
                       Text(
                         item.name,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       Text(
                         '\$${item.price.toString()}',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary),
+                        style: const TextStyle(
+                            fontSize: 20, color: Colors.orangeAccent),
                       ),
                     ],
                   ),
@@ -42,11 +42,7 @@ class ItemWidget extends StatelessWidget {
             ),
           ),
         ),
-        Divider(
-          color: Theme.of(context).colorScheme.tertiary,
-          endIndent: 25,
-          indent: 25,
-        ),
+        const Divider(endIndent: 25, indent: 25),
       ],
     );
   }

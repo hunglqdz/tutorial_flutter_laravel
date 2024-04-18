@@ -2,6 +2,9 @@ import 'package:appdemo/localization/locales.dart';
 import 'package:appdemo/models/item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
+import 'package:provider/provider.dart';
+
+import '../models/restaurant.dart';
 
 class DetailPage extends StatefulWidget {
   final Item item;
@@ -17,6 +20,17 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  void addToCart(Item item, Map<Addon, bool> selectedAddons) {
+    Navigator.pop(context);
+    List<Addon> currentlySelectedAddons = [];
+    for (Addon addon in widget.item.availableAddons) {
+      if (widget.selectedAddons[addon] == true) {
+        currentlySelectedAddons.add(addon);
+      }
+    }
+    context.read<Restaurant>().addToCart(item, currentlySelectedAddons);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,28 +46,23 @@ class _DetailPageState extends State<DetailPage> {
                 Text(
                   widget.item.name,
                   style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                      fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   '\$${widget.item.price.toString()}',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Theme.of(context).colorScheme.primary),
+                  style:
+                      const TextStyle(fontSize: 30, color: Colors.orangeAccent),
                 ),
                 const SizedBox(height: 15),
                 Divider(color: Theme.of(context).colorScheme.tertiary),
                 const SizedBox(height: 15),
-                Text(
+                const Text(
                   'Add-ons',
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
+                  style: TextStyle(color: Colors.blueAccent),
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Theme.of(context).colorScheme.tertiary),
+                    border: Border.all(color: Colors.blueAccent),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: ListView.builder(
@@ -80,7 +89,7 @@ class _DetailPageState extends State<DetailPage> {
           ),
           ElevatedButton.icon(
             icon: const Icon(Icons.add_shopping_cart),
-            onPressed: () {},
+            onPressed: () => addToCart(widget.item, widget.selectedAddons),
             label: Text(LocaleData.addtocart.getString(context)),
           ),
         ],

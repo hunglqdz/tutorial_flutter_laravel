@@ -23,10 +23,10 @@ class _LoginPageState extends State {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Colors.orange,
+        centerTitle: true,
         title: Text(LocaleData.login.getString(context)),
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
       body: Builder(
         builder: (context) => Center(
           child: Column(
@@ -36,14 +36,8 @@ class _LoginPageState extends State {
                 padding: const EdgeInsets.only(left: 50, bottom: 15),
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.key,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                    Text(
-                      LocaleData.password.getString(context),
-                      style: const TextStyle(fontSize: 15),
-                    ),
+                    const Icon(Icons.key),
+                    Text(LocaleData.password.getString(context)),
                   ],
                 ),
               ),
@@ -51,15 +45,15 @@ class _LoginPageState extends State {
                 padding: const EdgeInsets.only(left: 50, right: 50, bottom: 15),
                 child: Container(
                   width: 300,
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.tertiary),
+                  decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 225, 225, 225)),
                   child: Padding(
                     padding: const EdgeInsets.all(15),
                     child: Text(
                       pinController.text.replaceAll(RegExp(r'.'), '*'),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        fontSize: 30,
+                        fontSize: 40,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
