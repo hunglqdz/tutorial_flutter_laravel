@@ -43,11 +43,10 @@ class _CalculatorPageState extends State<CalculatorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Colors.orange,
         title: Text(LocaleData.calculator.getString(context)),
         centerTitle: true,
         leading: const Icon(Icons.menu),
-        actions: const [Icon(Icons.notifications)],
       ),
       body: Column(
         children: [
@@ -130,7 +129,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                   buttonText: buttons[index],
                   color: isOperator(buttons[index])
                       ? Colors.orange
-                      : Colors.orange[50],
+                      : Colors.grey.shade100,
                   textColor:
                       isOperator(buttons[index]) ? Colors.white : Colors.orange,
                 );

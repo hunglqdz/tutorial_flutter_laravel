@@ -19,21 +19,21 @@ class MyItem extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(item.imagePath, height: 120, width: 160),
+                  child: Image.asset(item.imagePath, height: 120, width: 150),
                 ),
-                const SizedBox(width: 15),
                 Expanded(
                   child: Column(
                     children: [
                       Text(
                         item.name,
+                        textAlign: TextAlign.center,
                         style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       Text(
                         '\$${item.price.toString()}',
-                        style: const TextStyle(
-                            fontSize: 20, color: Colors.orangeAccent),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.orange),
                       ),
                     ],
                   ),

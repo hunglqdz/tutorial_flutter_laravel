@@ -50,8 +50,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
                 Text(
                   '\$${widget.item.price.toString()}',
-                  style:
-                      const TextStyle(fontSize: 30, color: Colors.orangeAccent),
+                  style: const TextStyle(fontSize: 30, color: Colors.orange),
                 ),
                 const SizedBox(height: 15),
                 Divider(color: Theme.of(context).colorScheme.tertiary),

@@ -36,7 +36,7 @@ class _LoginPageState extends State {
                 padding: const EdgeInsets.only(left: 50, bottom: 15),
                 child: Row(
                   children: [
-                    const Icon(Icons.key),
+                    const Icon(Icons.key, color: Colors.orange),
                     Text(LocaleData.password.getString(context)),
                   ],
                 ),
@@ -45,8 +45,7 @@ class _LoginPageState extends State {
                 padding: const EdgeInsets.only(left: 50, right: 50, bottom: 15),
                 child: Container(
                   width: 300,
-                  decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 225, 225, 225)),
+                  decoration: BoxDecoration(color: Colors.grey.shade100),
                   child: Padding(
                     padding: const EdgeInsets.all(15),
                     child: Text(

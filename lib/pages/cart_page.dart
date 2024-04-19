@@ -17,6 +17,8 @@ class CartPage extends StatelessWidget {
         final userCart = restaurant.cart;
         return Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.orange,
+            centerTitle: true,
             title: Text(LocaleData.cart.getString(context)),
             actions: [
               IconButton(
@@ -29,14 +31,16 @@ class CartPage extends StatelessWidget {
                               actions: [
                                 TextButton(
                                   onPressed: () => Navigator.pop(context),
-                                  child: const Text('Cancel'),
+                                  child: const Text('No',
+                                      style: TextStyle(color: Colors.red)),
                                 ),
                                 TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                     restaurant.clearCart();
                                   },
-                                  child: const Text('Yes'),
+                                  child: const Text('Yes',
+                                      style: TextStyle(color: Colors.green)),
                                 ),
                               ],
                             ));
@@ -52,7 +56,8 @@ class CartPage extends StatelessWidget {
                     userCart.isEmpty
                         ? const Expanded(
                             child: Center(
-                              child: Text('Cart is empty'),
+                              child: Text('Cart is empty',
+                                  style: TextStyle(fontSize: 30)),
                             ),
                           )
                         : Expanded(
@@ -67,16 +72,17 @@ class CartPage extends StatelessWidget {
                   ],
                 ),
               ),
-              ElevatedButton(
+              ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: ((context) => const PaymentPage())));
                 },
-                child: const Text('Go to payment page'),
+                label: const Text('Go to payment page'),
+                icon: const Icon(Icons.payment),
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 30),
             ],
           ),
         );

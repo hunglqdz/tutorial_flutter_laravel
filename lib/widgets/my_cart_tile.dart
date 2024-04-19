@@ -14,46 +14,35 @@ class MyCartTile extends StatelessWidget {
     return Consumer<Restaurant>(
       builder: (context, restaurant, child) => Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.tertiary,
+          color: Colors.grey.shade100,
           borderRadius: BorderRadius.circular(8),
         ),
-        margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+        margin: const EdgeInsets.all(15),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      cartItem.item.imagePath,
-                      height: 100,
-                      width: 100,
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(cartItem.item.name),
-                      Text('\$${cartItem.item.price.toString()}'),
-                    ],
-                  ),
-                  const Spacer(),
-                  MyQuantitySelector(
-                    quantity: cartItem.quantity,
-                    item: cartItem.item,
-                    onIncrement: () {
-                      restaurant.addToCart(
-                          cartItem.item, cartItem.selectedAddons);
-                    },
-                    onDecrement: () {
-                      restaurant.removeFromCart(cartItem);
-                    },
-                  ),
-                ],
+            ListTile(
+              leading: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  cartItem.item.imagePath,
+                  width: 100,
+                  height: 100,
+                ),
+              ),
+              title: Text(cartItem.item.name),
+              subtitle: Text(
+                '\$${cartItem.item.price.toString()}',
+                style: const TextStyle(color: Colors.orange),
+              ),
+              trailing: MyQuantitySelector(
+                quantity: cartItem.quantity,
+                item: cartItem.item,
+                onIncrement: () {
+                  restaurant.addToCart(cartItem.item, cartItem.selectedAddons);
+                },
+                onDecrement: () {
+                  restaurant.removeFromCart(cartItem);
+                },
               ),
             ),
             SizedBox(
@@ -64,16 +53,12 @@ class MyCartTile extends StatelessWidget {
                 children: cartItem.selectedAddons
                     .map(
                       (addon) => Padding(
-                        padding: const EdgeInsets.only(right: 8),
+                        padding: const EdgeInsets.only(right: 10),
                         child: FilterChip(
                           label: Text(addon.name),
-                          shape: StadiumBorder(
-                              side: BorderSide(
-                                  color:
-                                      Theme.of(context).colorScheme.primary)),
+                          shape: const StadiumBorder(
+                              side: BorderSide(color: Colors.blueAccent)),
                           onSelected: (value) {},
-                          backgroundColor:
-                              Theme.of(context).colorScheme.tertiary,
                         ),
                       ),
                     )

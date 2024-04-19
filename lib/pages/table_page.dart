@@ -77,28 +77,28 @@ class _TablePageState extends State<TablePage> {
             color: Colors.orangeAccent,
             width: 300,
             height: 400,
-            child: Padding(
-              padding: const EdgeInsets.all(5),
-              child: Column(
-                children: [
-                  const Text('Select Table'),
-                  Expanded(
-                    child: Scrollbar(
-                      thumbVisibility: true,
-                      trackVisibility: true,
-                      interactive: true,
-                      thickness: 5,
-                      child: GridView.count(
-                        shrinkWrap: true,
-                        crossAxisCount: 3,
-                        children: List.generate(30, (index) {
-                          return MyTable(index: index + 1);
-                        }),
-                      ),
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Text('Select Table'),
+                ),
+                Expanded(
+                  child: Scrollbar(
+                    thumbVisibility: true,
+                    trackVisibility: true,
+                    interactive: true,
+                    thickness: 5,
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount: 3,
+                      children: List.generate(30, (index) {
+                        return MyTable(index: index + 1);
+                      }),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

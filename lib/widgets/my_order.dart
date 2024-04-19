@@ -6,22 +6,24 @@ class MyOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(15),
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(15),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const ListTile(
-              title: Text('Customer Name'),
+              leading: Icon(Icons.person),
+              title: Text('Biden Trump'),
               subtitle: Text('+84 0123456789'),
-              trailing: Text('\$210'),
+              trailing: Text('\$210',
+                  style: TextStyle(color: Colors.orange, fontSize: 20)),
             ),
             const Text('1x Pizza'),
             const Text('2x Burger'),
-            const Text('3x Coca'),
+            const Text('3x Beer'),
             ListTile(
-              title: const Text('April 10, 2024 at 11:00 AM'),
+              title: const Text('Apr 19, 2024 at 4:23 PM'),
               subtitle: IntrinsicWidth(
                 child: Row(
                   children: [
@@ -32,7 +34,7 @@ class MyOrder extends StatelessWidget {
                             vertical: 8, horizontal: 16),
                         decoration: BoxDecoration(
                           color: Colors.orange,
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(5),
                         ),
                         child: const Text(
                           'DINE IN',
@@ -43,7 +45,12 @@ class MyOrder extends StatelessWidget {
                   ],
                 ),
               ),
-              trailing: const Icon(Icons.call),
+              trailing: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.phone_callback,
+                    color: Colors.green,
+                  )),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

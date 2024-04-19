@@ -151,13 +151,18 @@ class Restaurant extends ChangeNotifier {
   final List<CartItem> _cart = [];
 
   void addToCart(Item item, List<Addon> selectedAddons) {
-    CartItem? cartItem = _cart.firstWhere((food) {
+    CartItem? cartItem = _cart.firstWhereOrNull((food) {
       bool isSameItem = food.item == item;
       bool isSameAddons =
           const ListEquality().equals(food.selectedAddons, selectedAddons);
       return isSameItem && isSameAddons;
     });
-    cartItem.quantity++;
+
+    if (cartItem != null) {
+      cartItem.quantity++;
+    } else {
+      _cart.add(CartItem(item: item, selectedAddons: selectedAddons));
+    }
     notifyListeners();
   }
 
@@ -196,22 +201,21 @@ class Restaurant extends ChangeNotifier {
 
   String displayReceipt() {
     final receipt = StringBuffer();
-    receipt.writeln("Here's your receipt");
-    receipt.writeln();
     String formattedDate =
         DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
-    receipt.writeln(formattedDate);
+    receipt.writeln('Date: $formattedDate');
     receipt.writeln();
-    receipt.writeln('----------');
+    receipt.writeln('---------------');
     for (final cartItem in _cart) {
+      receipt.writeln();
       receipt.writeln(
-          '${cartItem.quantity} x ${cartItem.item.name} - ${_formatPrice(cartItem.item.price)}');
+          '${cartItem.quantity} x ${cartItem.item.name} = ${_formatPrice(cartItem.item.price)}');
       if (cartItem.selectedAddons.isNotEmpty) {
         receipt.writeln('Add-ons: ${_formatAddons(cartItem.selectedAddons)}');
       }
-      receipt.writeln();
     }
-    receipt.writeln('----------');
+    receipt.writeln();
+    receipt.writeln('---------------');
     receipt.writeln();
     receipt.writeln('Total Items: ${getTotalItemCount()}');
     receipt.writeln('Total Price: ${_formatPrice(getTotalPrice())}');

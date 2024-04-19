@@ -84,7 +84,7 @@ class _ItemsPageState extends State<ItemsPage>
             isScrollable: true,
             controller: _tabController,
             indicatorWeight: 5,
-            indicatorColor: Colors.blueAccent,
+            indicatorColor: Colors.white,
             labelStyle: const TextStyle(fontSize: 20),
             labelPadding: const EdgeInsets.symmetric(horizontal: 10),
             labelColor: Colors.black,

@@ -8,6 +8,8 @@ class DeliveryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.orange,
+        centerTitle: true,
         title: const Text('Delivery in progress...'),
       ),
       bottomNavigationBar: _buildBottomNavBar(context),
@@ -21,6 +23,7 @@ class DeliveryPage extends StatelessWidget {
     return Container(
       height: 100,
       decoration: const BoxDecoration(
+          color: Colors.orange,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40), topRight: Radius.circular(40))),
       padding: const EdgeInsets.all(25),
@@ -28,9 +31,11 @@ class DeliveryPage extends StatelessWidget {
         children: [
           Container(
             decoration: const BoxDecoration(
-              shape: BoxShape.circle,
+                shape: BoxShape.circle, color: Colors.white),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.person),
             ),
-            child: IconButton(onPressed: () {}, icon: const Icon(Icons.person)),
           ),
           const SizedBox(width: 10),
           const Column(
@@ -42,22 +47,17 @@ class DeliveryPage extends StatelessWidget {
             children: [
               Container(
                 decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
+                    shape: BoxShape.circle, color: Colors.white),
                 child: IconButton(
                     onPressed: () {}, icon: const Icon(Icons.message)),
               ),
               const SizedBox(width: 10),
               Container(
                 decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
+                    shape: BoxShape.circle, color: Colors.white),
                 child: IconButton(
                     onPressed: () {},
-                    icon: const Icon(
-                      Icons.call,
-                      color: Colors.green,
-                    )),
+                    icon: const Icon(Icons.call, color: Colors.green)),
               ),
             ],
           )
