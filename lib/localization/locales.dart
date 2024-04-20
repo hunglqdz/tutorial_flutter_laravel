@@ -15,11 +15,11 @@ mixin LocaleData {
   static const String order = "order";
   static const String calculator = "calculator";
   static const String stats = 'stats';
-  static const String breakfast = "breakfast";
-  static const String lunch = "lunch";
-  static const String dinner = 'dinner';
-  static const String appetizer = "appetizer";
-  static const String main = 'main';
+  static const String rice = "rice";
+  static const String noodles = "noodles";
+  static const String softdrink = 'softdrink';
+  static const String beer = "beer";
+  static const String alcohol = 'alcohol';
   static const String side = 'side';
   static const String dessert = "dessert";
   static const String beverage = "beverage";
@@ -35,11 +35,11 @@ mixin LocaleData {
     order: 'Order',
     calculator: 'Calculator',
     stats: 'Stats',
-    breakfast: 'Breakfast',
-    lunch: 'Lunch',
-    dinner: 'Dinner',
-    appetizer: 'Appetizer',
-    main: 'Main',
+    rice: 'Rice',
+    noodles: 'Noodles',
+    softdrink: 'Soft Drink',
+    beer: 'Beer',
+    alcohol: 'Alcohol',
     side: 'Side',
     dessert: 'Dessert',
     beverage: 'Beverage',
@@ -56,11 +56,11 @@ mixin LocaleData {
     order: 'Đặt hàng',
     calculator: 'Máy tính',
     stats: 'Thống kê',
-    breakfast: 'Bữa sáng',
-    lunch: 'Bữa trưa',
-    dinner: 'Bữa tối',
-    appetizer: 'Khai vị',
-    main: 'Món chính',
+    rice: 'Cơm',
+    noodles: 'Mỳ/Miến/Phở',
+    softdrink: 'Nước ngọt',
+    beer: 'Bia',
+    alcohol: 'Rượu',
     side: 'Ăn kèm',
     dessert: 'Tráng miệng',
     beverage: 'Đồ uống',
@@ -77,11 +77,11 @@ mixin LocaleData {
     order: 'Befehl',
     calculator: 'Taschenrechner',
     stats: 'Statistiken',
-    breakfast: 'Frühstück',
-    lunch: 'Mittagessen',
-    dinner: 'Abendessen',
-    appetizer: 'Vorspeise',
-    main: 'Hauptgang',
+    rice: 'Reis',
+    noodles: 'Nudeln',
+    softdrink: 'Erfrischungsgetränk',
+    beer: 'Bier',
+    alcohol: 'Alkohol',
     side: 'Gericht zusammen',
     dessert: 'Nachspeisen',
     beverage: 'Getränk',

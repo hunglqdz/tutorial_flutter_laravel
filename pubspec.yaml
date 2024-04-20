@@ -38,8 +38,4 @@ flutter:
   assets:
     - assets/flags/
     - assets/icon/
-    - assets/items/appetizer/
-    - assets/items/main/
-    - assets/items/side/
-    - assets/items/dessert/
-    - assets/items/beverage/
+    - assets/items/

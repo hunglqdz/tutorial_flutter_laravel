@@ -17,9 +17,11 @@ class MyItem extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Row(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(item.imagePath, height: 120, width: 150),
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(item.imagePath, height: 120, width: 150),
+                  ),
                 ),
                 Expanded(
                   child: Column(

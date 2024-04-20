@@ -18,7 +18,7 @@ class Item {
   });
 }
 
-enum ItemCategory { appetizer, main, side, dessert, beverage }
+enum ItemCategory { rice, noodles, softdrink, beer, alcohol }
 
 class Addon {
   int id;

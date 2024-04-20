@@ -16,6 +16,7 @@ class MyReceipt extends StatelessWidget {
             const Text('Thank you for your order!'),
             const SizedBox(height: 25),
             const Text('Here is your receipt:'),
+            const SizedBox(height: 25),
             Container(
               decoration: BoxDecoration(
                 color: Colors.grey.shade100,
