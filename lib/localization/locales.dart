@@ -20,7 +20,7 @@ mixin LocaleData {
   static const String softdrink = 'softdrink';
   static const String beer = "beer";
   static const String alcohol = 'alcohol';
-  static const String side = 'side';
+  static const String addon = 'addon';
   static const String dessert = "dessert";
   static const String beverage = "beverage";
   static const String addtocart = "addtocart";
@@ -40,7 +40,7 @@ mixin LocaleData {
     softdrink: 'Soft Drink',
     beer: 'Beer',
     alcohol: 'Alcohol',
-    side: 'Side',
+    addon: 'Add-ons',
     dessert: 'Dessert',
     beverage: 'Beverage',
     addtocart: 'Add to cart',
@@ -61,7 +61,7 @@ mixin LocaleData {
     softdrink: 'Nước ngọt',
     beer: 'Bia',
     alcohol: 'Rượu',
-    side: 'Ăn kèm',
+    addon: 'Ăn kèm',
     dessert: 'Tráng miệng',
     beverage: 'Đồ uống',
     addtocart: 'Thêm vào giỏ hàng',
@@ -82,7 +82,7 @@ mixin LocaleData {
     softdrink: 'Erfrischungsgetränk',
     beer: 'Bier',
     alcohol: 'Alkohol',
-    side: 'Gericht zusammen',
+    addon: 'Gericht zusammen',
     dessert: 'Nachspeisen',
     beverage: 'Getränk',
     addtocart: 'in den Warenkorb legen',

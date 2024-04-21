@@ -10,7 +10,7 @@ class CartItem {
     this.quantity = 1,
   });
 
-  double get totalPrice {
+  int get totalPrice {
     return item.price * quantity;
   }
 }

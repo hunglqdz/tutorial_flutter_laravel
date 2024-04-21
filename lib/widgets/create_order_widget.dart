@@ -32,8 +32,9 @@ class _CreateOrderWidgetState extends State<CreateOrderWidget> {
           autofocus: true,
           controller: controller,
           decoration: const InputDecoration(hintText: 'TableId'),
-          validator: (value) =>
-              value != null && value.isEmpty ? 'TableId is required' : '',
+          validator: (value) => value != null && value.isEmpty
+              ? 'TableId is required'
+              : 'Good job',
         ),
       ),
       actions: [

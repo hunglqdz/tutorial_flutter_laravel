@@ -35,63 +35,63 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          Image.asset(widget.item.imagePath),
-          Padding(
-            padding: const EdgeInsets.all(25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.item.name,
-                  style: const TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  '\$${widget.item.price.toString()}',
-                  style: const TextStyle(fontSize: 30, color: Colors.orange),
-                ),
-                const SizedBox(height: 15),
-                Divider(color: Theme.of(context).colorScheme.tertiary),
-                const SizedBox(height: 15),
-                const Text(
-                  'Add-ons',
-                  style: TextStyle(color: Colors.blueAccent),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blueAccent),
-                    borderRadius: BorderRadius.circular(8),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset(widget.item.imagePath),
+            Padding(
+              padding: const EdgeInsets.all(25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.item.name,
+                    style: const TextStyle(
+                        fontSize: 30, fontWeight: FontWeight.bold),
                   ),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: widget.item.availableAddons.length,
-                    itemBuilder: (context, index) {
-                      Addon addon = widget.item.availableAddons[index];
-                      return CheckboxListTile(
-                        value: widget.selectedAddons[addon],
-                        onChanged: (bool? value) {
-                          setState(() {
-                            widget.selectedAddons[addon] = value!;
-                          });
-                        },
-                        title: Text(addon.name,
-                            style: const TextStyle(color: Colors.grey)),
-                      );
-                    },
+                  Text(
+                    '${widget.item.price.toString()} VND',
+                    style: const TextStyle(fontSize: 30, color: Colors.orange),
                   ),
-                ),
-              ],
+                  const Divider(),
+                  Text(
+                    LocaleData.addon.getString(context),
+                    style: const TextStyle(color: Colors.blueAccent),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: widget.item.availableAddons.length,
+                      itemBuilder: (context, index) {
+                        Addon addon = widget.item.availableAddons[index];
+                        return CheckboxListTile(
+                          value: widget.selectedAddons[addon],
+                          onChanged: (bool? value) {
+                            setState(() {
+                              widget.selectedAddons[addon] = value!;
+                            });
+                          },
+                          title: Text(addon.name,
+                              style: const TextStyle(color: Colors.grey)),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          ElevatedButton.icon(
-            icon: const Icon(Icons.add_shopping_cart),
-            onPressed: () => addToCart(widget.item, widget.selectedAddons),
-            label: Text(LocaleData.addtocart.getString(context)),
-          ),
-        ],
+            ElevatedButton.icon(
+              icon: const Icon(Icons.add_shopping_cart),
+              onPressed: () => addToCart(widget.item, widget.selectedAddons),
+              label: Text(LocaleData.addtocart.getString(context)),
+            ),
+          ],
+        ),
       ),
     );
   }

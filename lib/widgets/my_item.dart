@@ -1,5 +1,7 @@
 import 'package:appdemo/models/item.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MyItem extends StatelessWidget {
   final Item item;
@@ -18,9 +20,10 @@ class MyItem extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(item.imagePath, height: 120, width: 150),
+                  child: SizedBox(
+                    width: 150,
+                    height: 150,
+                    child: Image.asset(item.imagePath),
                   ),
                 ),
                 Expanded(
@@ -33,7 +36,7 @@ class MyItem extends StatelessWidget {
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        '\$${item.price.toString()}',
+                        '${item.price.toString()} VND',
                         style:
                             const TextStyle(fontSize: 20, color: Colors.orange),
                       ),

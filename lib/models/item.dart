@@ -3,7 +3,7 @@ class Item {
   final int id;
   final String imagePath;
   final String name;
-  final double price;
+  final int price;
   final double takeaway;
   final ItemCategory category;
   List<Addon> availableAddons;

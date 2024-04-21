@@ -21,17 +21,14 @@ class MyCartTile extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              leading: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.asset(
-                  cartItem.item.imagePath,
-                  width: 100,
-                  height: 100,
-                ),
+              leading: SizedBox(
+                width: 100,
+                height: 100,
+                child: Image.asset(cartItem.item.imagePath),
               ),
               title: Text(cartItem.item.name),
               subtitle: Text(
-                '\$${cartItem.item.price.toString()}',
+                '${cartItem.item.price.toString()} VND',
                 style: const TextStyle(color: Colors.orange),
               ),
               trailing: MyQuantitySelector(

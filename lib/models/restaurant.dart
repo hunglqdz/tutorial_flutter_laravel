@@ -10,145 +10,145 @@ class Restaurant extends ChangeNotifier {
     Item(
         imagePath: 'assets/items/bia_1664.jpg',
         name: 'Bia 1664 BLANC',
-        price: 1.5,
+        price: 30000,
         id: 0,
-        takeaway: 1.5,
+        takeaway: 30000,
         category: ItemCategory.beer,
         availableAddons: [Addon(id: 0, name: 'Lạc luộc')]),
     Item(
         imagePath: 'assets/items/bia_budweiser.jpg',
         name: 'Bia Budweiser',
-        price: 2,
+        price: 40000,
         id: 0,
-        takeaway: 2,
+        takeaway: 40000,
         category: ItemCategory.beer,
         availableAddons: [Addon(id: 0, name: 'Lạc luộc')]),
     Item(
         imagePath: 'assets/items/bia_hai_phong.jpg',
         name: 'Bia Hải Phòng',
-        price: 2.5,
+        price: 20000,
         id: 0,
-        takeaway: 2.5,
+        takeaway: 20000,
         category: ItemCategory.beer,
         availableAddons: [Addon(id: 0, name: 'Lạc luộc')]),
     Item(
         imagePath: 'assets/items/cocacola.jpg',
         name: 'Cô ca cô la',
-        price: 3,
+        price: 15000,
         id: 0,
-        takeaway: 3,
+        takeaway: 15000,
         category: ItemCategory.softdrink,
         availableAddons: []),
     Item(
         imagePath: 'assets/items/com_ca.jpg',
         name: 'Cơm cá ba sa kho tộ',
-        price: 2.5,
+        price: 55000,
         id: 0,
-        takeaway: 2.5,
+        takeaway: 55000,
         category: ItemCategory.rice,
         availableAddons: [Addon(id: 0, name: 'Canh')]),
     Item(
         imagePath: 'assets/items/com_ga.jpg',
         name: 'Cơm đùi gà xối mỡ',
-        price: 5,
+        price: 40000,
         id: 0,
-        takeaway: 5,
+        takeaway: 40000,
         category: ItemCategory.rice,
         availableAddons: [Addon(id: 0, name: 'Canh')]),
     Item(
         imagePath: 'assets/items/com_suon.jpg',
         name: 'Cơm sườn nướng',
-        price: 6.5,
+        price: 50000,
         id: 0,
-        takeaway: 6.5,
+        takeaway: 50000,
         category: ItemCategory.rice,
         availableAddons: [Addon(id: 0, name: 'Canh')]),
     Item(
         imagePath: 'assets/items/com_thit_kho.jpg',
         name: 'Cơm thịt kho với trứng',
-        price: 7.5,
+        price: 45000,
         id: 0,
-        takeaway: 7.5,
+        takeaway: 45000,
         category: ItemCategory.rice,
         availableAddons: [Addon(id: 0, name: 'Canh')]),
     Item(
         imagePath: 'assets/items/fanta.jpg',
         name: 'Fanta',
-        price: 8,
+        price: 15000,
         id: 0,
-        takeaway: 8,
+        takeaway: 15000,
         category: ItemCategory.softdrink,
         availableAddons: []),
     Item(
         imagePath: 'assets/items/mi_pho_bo.jpg',
         name: 'Mì/Phở bò',
-        price: 12.5,
+        price: 35000,
         id: 0,
-        takeaway: 12.5,
+        takeaway: 35000,
         category: ItemCategory.noodles,
         availableAddons: [Addon(id: 0, name: 'Rau thơm')]),
     Item(
         imagePath: 'assets/items/mi_pho_xao_bo.jpg',
         name: 'Mì/Phở xào bò',
-        price: 2.5,
+        price: 40000,
         id: 0,
-        takeaway: 2.5,
+        takeaway: 40000,
         category: ItemCategory.noodles,
         availableAddons: [Addon(id: 0, name: 'Nước dùng')]),
     Item(
         imagePath: 'assets/items/mi_trung.jpg',
         name: 'Mì trứng',
-        price: 3,
+        price: 25000,
         id: 0,
-        takeaway: 3,
+        takeaway: 25000,
         category: ItemCategory.noodles,
         availableAddons: [Addon(id: 0, name: 'Sting')]),
     Item(
         imagePath: 'assets/items/mien_tom.jpg',
         name: 'Miến tôm',
-        price: 10,
+        price: 40000,
         id: 0,
-        takeaway: 10,
+        takeaway: 40000,
         category: ItemCategory.noodles,
         availableAddons: []),
     Item(
         imagePath: 'assets/items/nuoc_suoi.jpg',
         name: 'Nước suối',
-        price: 14.5,
+        price: 10000,
         id: 0,
-        takeaway: 14.5,
+        takeaway: 10000,
         category: ItemCategory.softdrink,
         availableAddons: []),
     Item(
         imagePath: 'assets/items/ruou_trang.jpg',
         name: 'Rượu nếp trắng',
-        price: 15,
+        price: 50000,
         id: 0,
-        takeaway: 15,
+        takeaway: 50000,
         category: ItemCategory.alcohol,
         availableAddons: []),
     Item(
         imagePath: 'assets/items/ruou_vang.jpg',
         name: 'Rượu vang đỏ',
-        price: 20,
+        price: 200000,
         id: 0,
-        takeaway: 20,
+        takeaway: 200000,
         category: ItemCategory.alcohol,
         availableAddons: []),
     Item(
         imagePath: 'assets/items/ruou_whisky.jpg',
         name: 'Rượu Whisky',
-        price: 5,
+        price: 500000,
         id: 0,
-        takeaway: 5,
+        takeaway: 500000,
         category: ItemCategory.alcohol,
-        availableAddons: [Addon(id: 0, name: 'Boiled Peanuts')]),
+        availableAddons: []),
     Item(
         imagePath: 'assets/items/sprite.jpg',
         name: 'Sprite',
-        price: 14.5,
+        price: 15000,
         id: 0,
-        takeaway: 14.5,
+        takeaway: 15000,
         category: ItemCategory.softdrink,
         availableAddons: []),
   ];
@@ -186,8 +186,8 @@ class Restaurant extends ChangeNotifier {
     notifyListeners();
   }
 
-  double getTotalPrice() {
-    double total = 0;
+  int getTotalPrice() {
+    int total = 0;
     for (CartItem cartItem in _cart) {
       total += cartItem.item.price * cartItem.quantity;
     }
@@ -230,8 +230,8 @@ class Restaurant extends ChangeNotifier {
     return receipt.toString();
   }
 
-  String _formatPrice(double price) {
-    return '\$${price.toStringAsFixed(2)}';
+  String _formatPrice(int price) {
+    return '${price.toString()} VND';
   }
 
   String _formatAddons(List<Addon> addons) {
