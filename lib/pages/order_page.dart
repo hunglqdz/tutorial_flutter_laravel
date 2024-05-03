@@ -1,5 +1,4 @@
 import 'package:appdemo/database/restaurant_db.dart';
-import 'package:appdemo/widgets/my_order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:intl/intl.dart';
@@ -38,7 +37,6 @@ class _OrderPageState extends State<OrderPage> {
         backgroundColor: Colors.orange,
         title: Text(LocaleData.order.getString(context)),
         centerTitle: true,
-        leading: const Icon(Icons.menu),
         actions: [
           IconButton(
             onPressed: () {

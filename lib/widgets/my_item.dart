@@ -1,7 +1,5 @@
 import 'package:appdemo/models/item.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MyItem extends StatelessWidget {
   final Item item;
@@ -20,7 +18,8 @@ class MyItem extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: SizedBox(
+                  child: Container(
+                    decoration: const BoxDecoration(shape: BoxShape.rectangle),
                     width: 150,
                     height: 150,
                     child: Image.asset(item.imagePath),

@@ -1,9 +1,6 @@
 import 'package:appdemo/widgets/my_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localization/flutter_localization.dart';
 import 'package:math_expressions/math_expressions.dart';
-
-import '../localization/locales.dart';
 
 class CalculatorPage extends StatefulWidget {
   const CalculatorPage({super.key});
@@ -42,12 +39,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.orange,
-        title: Text(LocaleData.calculator.getString(context)),
-        centerTitle: true,
-        leading: const Icon(Icons.menu),
-      ),
       body: Column(
         children: [
           Column(
