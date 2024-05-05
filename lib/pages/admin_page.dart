@@ -1,10 +1,11 @@
-import 'package:appdemo/pages/order_page.dart';
-import 'package:appdemo/pages/stats_page.dart';
-import 'package:appdemo/pages/table_page.dart';
+import 'package:appdemo/pages/customer_page.dart';
+import 'package:appdemo/pages/report_page.dart';
+import 'package:appdemo/pages/table_orders_page.dart';
 import 'package:flutter/material.dart';
 
 import 'cart_page.dart';
-import 'items_page.dart';
+import 'orders_page.dart';
+import 'quick_order_page.dart';
 import 'calculator_page.dart';
 
 class AdminPage extends StatefulWidget {
@@ -39,14 +40,16 @@ class _AdminPageState extends State<AdminPage> {
     'Table Orders',
     'Orders',
     'Report',
+    'Customer',
     'Calculator'
   ];
-  static const List<Widget> pages = [
-    ItemsPage(),
-    TablePage(),
-    OrderPage(),
-    StatsPage(),
-    CalculatorPage()
+  static List<Widget> pages = [
+    const QuickOrderPage(),
+    const TableOrdersPage(),
+    const OrdersPage(),
+    const ReportPage(),
+    CustomerPage(),
+    const CalculatorPage()
   ];
 
   void onTapped(int index) {
@@ -105,52 +108,59 @@ class _AdminPageState extends State<AdminPage> {
               leading: const Icon(Icons.punch_clock),
               title: const Text('Quick Order'),
               selected: selectedIndex == 0,
+              selectedColor: Colors.blueAccent,
               onTap: () {
                 onTapped(0);
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              leading: const Icon(
-                Icons.table_restaurant,
-              ),
+              leading: const Icon(Icons.table_restaurant),
               title: const Text('Table Orders'),
               selected: selectedIndex == 1,
+              selectedColor: Colors.blueAccent,
               onTap: () {
                 onTapped(1);
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              leading: const Icon(
-                Icons.checklist,
-              ),
+              leading: const Icon(Icons.checklist),
               title: const Text('Orders'),
               selected: selectedIndex == 2,
+              selectedColor: Colors.blueAccent,
               onTap: () {
                 onTapped(2);
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              leading: const Icon(
-                Icons.bar_chart,
-              ),
+              leading: const Icon(Icons.bar_chart),
               title: const Text('Report'),
               selected: selectedIndex == 3,
+              selectedColor: Colors.blueAccent,
               onTap: () {
                 onTapped(3);
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              leading: const Icon(
-                Icons.calculate,
-              ),
-              title: const Text('Calculator'),
+              leading: const Icon(Icons.person),
+              title: const Text('Customer'),
               selected: selectedIndex == 4,
+              selectedColor: Colors.blueAccent,
               onTap: () {
                 onTapped(4);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.calculate),
+              title: const Text('Calculator'),
+              selected: selectedIndex == 5,
+              selectedColor: Colors.blueAccent,
+              onTap: () {
+                onTapped(5);
                 Navigator.pop(context);
               },
             ),

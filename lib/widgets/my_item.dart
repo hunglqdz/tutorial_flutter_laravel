@@ -9,45 +9,32 @@ class MyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: const BoxDecoration(shape: BoxShape.rectangle),
-                    width: 150,
-                    height: 150,
-                    child: Image.asset(item.imagePath),
-                  ),
-                ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      Text(
-                        item.name,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        '${item.price.toString()} VND',
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.orange),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.blueAccent),
+            borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20))),
+        width: 150,
+        height: 200,
+        child: Column(
+          children: [
+            Image.asset(item.imagePath,
+                width: 200, height: 120, fit: BoxFit.fill),
+            Text(
+              item.name,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-          ),
+            Text(
+              '${item.price.toString()} VND',
+              style: const TextStyle(color: Colors.orange),
+            ),
+          ],
         ),
-        const Divider(endIndent: 25, indent: 25),
-      ],
+      ),
     );
   }
 }

@@ -38,7 +38,10 @@ class _DetailPageState extends State<DetailPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.asset(widget.item.imagePath),
+            Image.asset(widget.item.imagePath,
+                width: MediaQuery.of(context).size.width,
+                height: 300,
+                fit: BoxFit.fill),
             Padding(
               padding: const EdgeInsets.all(25),
               child: Column(

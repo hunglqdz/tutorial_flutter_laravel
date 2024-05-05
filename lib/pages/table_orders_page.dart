@@ -1,14 +1,14 @@
 import 'package:appdemo/widgets/my_table.dart';
 import 'package:flutter/material.dart';
 
-class TablePage extends StatefulWidget {
-  const TablePage({super.key});
+class TableOrdersPage extends StatefulWidget {
+  const TableOrdersPage({super.key});
 
   @override
-  State<TablePage> createState() => _TablePageState();
+  State<TableOrdersPage> createState() => _TableOrdersPageState();
 }
 
-class _TablePageState extends State<TablePage> {
+class _TableOrdersPageState extends State<TableOrdersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
