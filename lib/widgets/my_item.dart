@@ -18,15 +18,17 @@ class MyItem extends StatelessWidget {
             borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20))),
-        width: 150,
-        height: 200,
         child: Column(
           children: [
-            Image.asset(item.imagePath,
-                width: 200, height: 120, fit: BoxFit.fill),
+            Image.asset(
+              item.imagePath,
+              width: 160,
+              height: 90,
+              fit: BoxFit.fill,
+            ),
             Text(
               item.name,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             ),
             Text(
               '${item.price.toString()} VND',

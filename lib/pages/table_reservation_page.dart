@@ -1,25 +1,33 @@
 import 'package:appdemo/widgets/my_table.dart';
 import 'package:flutter/material.dart';
 
-class TableOrdersPage extends StatefulWidget {
-  const TableOrdersPage({super.key});
+class TableReservationPage extends StatefulWidget {
+  const TableReservationPage({super.key});
 
   @override
-  State<TableOrdersPage> createState() => _TableOrdersPageState();
+  State<TableReservationPage> createState() => _TableReservationPageState();
 }
 
-class _TableOrdersPageState extends State<TableOrdersPage> {
+class _TableReservationPageState extends State<TableReservationPage> {
+  List<bool> tableStates = List.generate(30, (index) => false);
+
+  void changeTableState(int index) {
+    setState(() {
+      tableStates[index] = !tableStates[index];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(15),
+          Padding(
+            padding: const EdgeInsets.all(15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
+                const Column(
                   children: [
                     Text('30',
                         style: TextStyle(
@@ -35,12 +43,12 @@ class _TableOrdersPageState extends State<TableOrdersPage> {
                 ),
                 Column(
                   children: [
-                    Text('20',
-                        style: TextStyle(
+                    Text('${tableStates.where((table) => !table).length}',
+                        style: const TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.bold,
                             fontSize: 20)),
-                    Text('Free',
+                    const Text('Free',
                         style: TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.bold,
@@ -49,12 +57,12 @@ class _TableOrdersPageState extends State<TableOrdersPage> {
                 ),
                 Column(
                   children: [
-                    Text('10',
-                        style: TextStyle(
+                    Text('${tableStates.where((table) => table).length}',
+                        style: const TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
                             fontSize: 20)),
-                    Text('Reserved',
+                    const Text('Reserved',
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
@@ -80,12 +88,37 @@ class _TableOrdersPageState extends State<TableOrdersPage> {
                     trackVisibility: true,
                     interactive: true,
                     thickness: 5,
-                    child: GridView.count(
+                    child: GridView.builder(
                       shrinkWrap: true,
-                      crossAxisCount: 3,
-                      children: List.generate(30, (index) {
-                        return MyTable(index: index + 1);
-                      }),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3),
+                      itemCount: 30,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () => changeTableState(index),
+                          child: Container(
+                            margin: const EdgeInsets.all(10),
+                            width: 90,
+                            height: 90,
+                            color: tableStates[index]
+                                ? Colors.blueAccent
+                                : Colors.white,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text('Table'),
+                                Text(
+                                  '${index + 1}',
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),

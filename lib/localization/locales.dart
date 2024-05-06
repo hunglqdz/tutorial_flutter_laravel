@@ -10,11 +10,13 @@ mixin LocaleData {
   static const String language = "language";
   static const String login = "login";
   static const String password = "password";
-  static const String table = 'table';
-  static const String items = "items";
-  static const String order = "order";
+  static const String tablereservation = 'tablereservation';
+  static const String orders = "orders";
+  static const String quickorder = "quickorder";
   static const String calculator = "calculator";
-  static const String stats = 'stats';
+  static const String report = 'report';
+  static const String customermanagement = 'customermanagement';
+
   static const String rice = "rice";
   static const String noodles = "noodles";
   static const String softdrink = 'softdrink';
@@ -30,11 +32,12 @@ mixin LocaleData {
     language: 'English',
     login: 'Login',
     password: 'Password',
-    table: 'Table',
-    items: 'Items',
-    order: 'Order',
+    tablereservation: 'Table Reservation',
+    orders: 'Orders',
+    quickorder: 'Quick Order',
     calculator: 'Calculator',
-    stats: 'Stats',
+    report: 'Report',
+    customermanagement: 'Customer Management',
     rice: 'Rice',
     noodles: 'Noodles',
     softdrink: 'Soft Drink',
@@ -43,7 +46,7 @@ mixin LocaleData {
     addon: 'Add-ons',
     dessert: 'Dessert',
     beverage: 'Beverage',
-    addtocart: 'Add to cart',
+    addtocart: 'Add to Cart',
     cart: 'Cart'
   };
 
@@ -51,11 +54,12 @@ mixin LocaleData {
     language: 'Tiếng Việt',
     login: 'Đăng nhập',
     password: 'Mật khẩu',
-    table: 'Bàn',
-    items: 'Món ăn',
-    order: 'Đặt hàng',
+    tablereservation: 'Đặt bàn',
+    orders: 'Đơn hàng',
+    quickorder: 'Đặt hàng nhanh',
     calculator: 'Máy tính',
-    stats: 'Thống kê',
+    report: 'Báo cáo',
+    customermanagement: 'Quản lí khách hàng',
     rice: 'Cơm',
     noodles: 'Mỳ/Miến/Phở',
     softdrink: 'Nước ngọt',
@@ -72,11 +76,12 @@ mixin LocaleData {
     language: 'Deutsch',
     login: 'Anmeldung',
     password: 'Passwort',
-    table: 'Tisch',
-    items: 'Artikel',
-    order: 'Befehl',
+    tablereservation: 'Tischreservierung',
+    orders: 'Aufträge',
+    quickorder: 'Befehl',
     calculator: 'Taschenrechner',
-    stats: 'Statistiken',
+    report: 'Bericht',
+    customermanagement: 'Kundenmanagement',
     rice: 'Reis',
     noodles: 'Nudeln',
     softdrink: 'Erfrischungsgetränk',

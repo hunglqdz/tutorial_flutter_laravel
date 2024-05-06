@@ -1,3 +1,4 @@
+import 'package:appdemo/pages/admin_page.dart';
 import 'package:appdemo/widgets/my_receipt.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +10,27 @@ class DeliveryPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
-        centerTitle: true,
-        title: const Text('Delivery in progress...'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.print),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AdminPage(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.keyboard_return),
+          ),
+        ],
       ),
       bottomNavigationBar: _buildBottomNavBar(context),
-      body: const Column(
-        children: [MyReceipt()],
+      body: const SingleChildScrollView(
+        child: MyReceipt(),
       ),
     );
   }

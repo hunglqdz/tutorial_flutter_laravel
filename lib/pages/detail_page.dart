@@ -89,9 +89,10 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ),
             ElevatedButton.icon(
-              icon: const Icon(Icons.add_shopping_cart),
+              icon: const Icon(Icons.add_shopping_cart, color: Colors.orange),
               onPressed: () => addToCart(widget.item, widget.selectedAddons),
-              label: Text(LocaleData.addtocart.getString(context)),
+              label: Text(LocaleData.addtocart.getString(context),
+                  style: const TextStyle(color: Colors.orange)),
             ),
           ],
         ),

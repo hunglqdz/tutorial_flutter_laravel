@@ -91,7 +91,14 @@ class _PaymentPageState extends State<PaymentPage> {
               formKey: formKey,
             ),
             const SizedBox(height: 30),
-            ElevatedButton(onPressed: userTappedPay, child: const Text('Pay'))
+            ElevatedButton.icon(
+              onPressed: userTappedPay,
+              label: const Text('Pay', style: TextStyle(color: Colors.orange)),
+              icon: const Icon(
+                Icons.verified,
+                color: Colors.orange,
+              ),
+            )
           ],
         ),
       ),

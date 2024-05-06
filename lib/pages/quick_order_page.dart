@@ -1,10 +1,8 @@
 import 'package:appdemo/localization/locales.dart';
 import 'package:appdemo/models/item.dart';
 import 'package:appdemo/models/restaurant.dart';
-import 'package:appdemo/pages/cart_page.dart';
 import 'package:appdemo/widgets/my_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:provider/provider.dart';
 

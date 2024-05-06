@@ -1,19 +1,17 @@
 import 'package:appdemo/database/customer_db.dart';
 import 'package:appdemo/models/customer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../widgets/create_customer_widget.dart';
 
-class CustomerPage extends StatefulWidget {
-  const CustomerPage({super.key});
+class CustomerManagementPage extends StatefulWidget {
+  const CustomerManagementPage({super.key});
 
   @override
-  State<CustomerPage> createState() => _CustomerPageState();
+  State<CustomerManagementPage> createState() => _CustomerManagementPageState();
 }
 
-class _CustomerPageState extends State<CustomerPage> {
+class _CustomerManagementPageState extends State<CustomerManagementPage> {
   Future<List<Customer>>? futureCustomers;
   final customerDB = CustomerDB();
 

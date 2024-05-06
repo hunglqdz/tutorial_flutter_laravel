@@ -1,7 +1,9 @@
-import 'package:appdemo/pages/customer_page.dart';
+import 'package:appdemo/localization/locales.dart';
+import 'package:appdemo/pages/customer_management_page.dart';
 import 'package:appdemo/pages/report_page.dart';
-import 'package:appdemo/pages/table_orders_page.dart';
+import 'package:appdemo/pages/table_reservation_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 
 import 'cart_page.dart';
 import 'orders_page.dart';
@@ -16,39 +18,21 @@ class AdminPage extends StatefulWidget {
 }
 
 class _AdminPageState extends State<AdminPage> {
-  // int index = 0;
-
-  // final pages = [
-  //   const TablePage(),
-  //   const ItemsPage(),
-  //   const OrderPage(),
-  //   const CalculatorPage(),
-  //   const StatsPage(),
-  // ];
-
-  // final icons = [
-  //   const Icon(Icons.table_restaurant, size: 30),
-  //   const Icon(Icons.fastfood, size: 30),
-  //   const Icon(Icons.food_bank, size: 30),
-  //   const Icon(Icons.calculate, size: 30),
-  //   const Icon(Icons.bar_chart, size: 30),
-  // ];
-
   int selectedIndex = 0;
-  static const List<String> titles = [
+  static List<String> titles = [
     'Quick Order',
-    'Table Orders',
+    'Table Reservation',
     'Orders',
     'Report',
-    'Customer',
+    'Customer Management',
     'Calculator'
   ];
   static List<Widget> pages = [
     const QuickOrderPage(),
-    const TableOrdersPage(),
+    const TableReservationPage(),
     const OrdersPage(),
     const ReportPage(),
-    CustomerPage(),
+    const CustomerManagementPage(),
     const CalculatorPage()
   ];
 
@@ -92,6 +76,7 @@ class _AdminPageState extends State<AdminPage> {
         ],
       ),
       drawer: Drawer(
+        width: MediaQuery.of(context).size.width * .5,
         child: ListView(
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
@@ -106,7 +91,7 @@ class _AdminPageState extends State<AdminPage> {
             ),
             ListTile(
               leading: const Icon(Icons.punch_clock),
-              title: const Text('Quick Order'),
+              title: Text(LocaleData.quickorder.getString(context)),
               selected: selectedIndex == 0,
               selectedColor: Colors.blueAccent,
               onTap: () {
@@ -116,7 +101,7 @@ class _AdminPageState extends State<AdminPage> {
             ),
             ListTile(
               leading: const Icon(Icons.table_restaurant),
-              title: const Text('Table Orders'),
+              title: Text(LocaleData.tablereservation.getString(context)),
               selected: selectedIndex == 1,
               selectedColor: Colors.blueAccent,
               onTap: () {
@@ -126,7 +111,7 @@ class _AdminPageState extends State<AdminPage> {
             ),
             ListTile(
               leading: const Icon(Icons.checklist),
-              title: const Text('Orders'),
+              title: Text(LocaleData.orders.getString(context)),
               selected: selectedIndex == 2,
               selectedColor: Colors.blueAccent,
               onTap: () {
@@ -136,7 +121,7 @@ class _AdminPageState extends State<AdminPage> {
             ),
             ListTile(
               leading: const Icon(Icons.bar_chart),
-              title: const Text('Report'),
+              title: Text(LocaleData.report.getString(context)),
               selected: selectedIndex == 3,
               selectedColor: Colors.blueAccent,
               onTap: () {
@@ -146,7 +131,7 @@ class _AdminPageState extends State<AdminPage> {
             ),
             ListTile(
               leading: const Icon(Icons.person),
-              title: const Text('Customer'),
+              title: Text(LocaleData.customermanagement.getString(context)),
               selected: selectedIndex == 4,
               selectedColor: Colors.blueAccent,
               onTap: () {
@@ -156,7 +141,7 @@ class _AdminPageState extends State<AdminPage> {
             ),
             ListTile(
               leading: const Icon(Icons.calculate),
-              title: const Text('Calculator'),
+              title: Text(LocaleData.calculator.getString(context)),
               selected: selectedIndex == 5,
               selectedColor: Colors.blueAccent,
               onTap: () {

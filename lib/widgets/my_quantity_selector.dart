@@ -32,9 +32,12 @@ class MyQuantitySelector extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 20,
+            width: 30,
             child: Center(
-              child: Text(quantity.toString()),
+              child: Text(
+                quantity.toString(),
+                style: const TextStyle(fontSize: 20),
+              ),
             ),
           ),
           GestureDetector(

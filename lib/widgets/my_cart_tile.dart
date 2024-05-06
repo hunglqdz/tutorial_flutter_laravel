@@ -15,17 +15,15 @@ class MyCartTile extends StatelessWidget {
       builder: (context, restaurant, child) => Container(
         decoration: BoxDecoration(
           color: Colors.grey.shade100,
-          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.black),
+          borderRadius: BorderRadius.circular(10),
         ),
         margin: const EdgeInsets.all(15),
         child: Column(
           children: [
             ListTile(
-              leading: SizedBox(
-                width: 100,
-                height: 100,
-                child: Image.asset(cartItem.item.imagePath),
-              ),
+              leading: Image.asset(cartItem.item.imagePath,
+                  width: 75, height: 75, fit: BoxFit.fill),
               title: Text(cartItem.item.name),
               subtitle: Text(
                 '${cartItem.item.price.toString()} VND',

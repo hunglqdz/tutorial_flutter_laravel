@@ -79,8 +79,11 @@ class CartPage extends StatelessWidget {
                       MaterialPageRoute(
                           builder: ((context) => const PaymentPage())));
                 },
-                label: const Text('Go to payment page'),
-                icon: const Icon(Icons.payment),
+                label: const Text(
+                  'Go to payment page',
+                  style: TextStyle(color: Colors.blueAccent),
+                ),
+                icon: const Icon(Icons.payment, color: Colors.blueAccent),
               ),
               const SizedBox(height: 30),
             ],
