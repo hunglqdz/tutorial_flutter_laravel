@@ -43,6 +43,7 @@ class _MyAppState extends State<MyApp> {
       locale: const Locale('en'),
       supportedLocales: localization.supportedLocales,
       localizationsDelegates: localization.localizationsDelegates,
+      theme: ThemeData(fontFamily: 'Play'),
       home: const LoginPage(),
     );
   }

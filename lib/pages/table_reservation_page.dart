@@ -1,5 +1,6 @@
-import 'package:appdemo/widgets/my_table.dart';
 import 'package:flutter/material.dart';
+
+import 'table_page.dart';
 
 class TableReservationPage extends StatefulWidget {
   const TableReservationPage({super.key});
@@ -9,27 +10,19 @@ class TableReservationPage extends StatefulWidget {
 }
 
 class _TableReservationPageState extends State<TableReservationPage> {
-  List<bool> tableStates = List.generate(30, (index) => false);
-
-  void changeTableState(int index) {
-    setState(() {
-      tableStates[index] = !tableStates[index];
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(15),
+          const Padding(
+            padding: EdgeInsets.all(15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Column(
+                Column(
                   children: [
-                    Text('30',
+                    Text('27',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -43,12 +36,12 @@ class _TableReservationPageState extends State<TableReservationPage> {
                 ),
                 Column(
                   children: [
-                    Text('${tableStates.where((table) => !table).length}',
-                        style: const TextStyle(
+                    Text('27',
+                        style: TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.bold,
                             fontSize: 20)),
-                    const Text('Free',
+                    Text('Free',
                         style: TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.bold,
@@ -57,12 +50,12 @@ class _TableReservationPageState extends State<TableReservationPage> {
                 ),
                 Column(
                   children: [
-                    Text('${tableStates.where((table) => table).length}',
-                        style: const TextStyle(
+                    Text('0',
+                        style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
                             fontSize: 20)),
-                    const Text('Reserved',
+                    Text('Reserved',
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
@@ -74,55 +67,124 @@ class _TableReservationPageState extends State<TableReservationPage> {
           ),
           Container(
             color: Colors.orangeAccent,
-            width: 300,
-            height: 400,
-            child: Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(15),
-                  child: Text('Select Table'),
-                ),
-                Expanded(
-                  child: Scrollbar(
-                    thumbVisibility: true,
-                    trackVisibility: true,
-                    interactive: true,
-                    thickness: 5,
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3),
-                      itemCount: 30,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () => changeTableState(index),
-                          child: Container(
-                            margin: const EdgeInsets.all(10),
-                            width: 90,
-                            height: 90,
-                            color: tableStates[index]
-                                ? Colors.blueAccent
-                                : Colors.white,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text('Table'),
-                                Text(
-                                  '${index + 1}',
-                                  style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                )
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+            width: MediaQuery.of(context).size.width * .9,
+            height: MediaQuery.of(context).size.height * .7,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const Center(
+                    child: Text('Floor 1'),
                   ),
-                ),
-              ],
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3),
+                    itemCount: 9,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TablePage(index))),
+                        child: Card(
+                          shape: const RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.blueAccent),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          margin: const EdgeInsets.all(10),
+                          elevation: 5,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${index + 1}',
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  const Center(
+                    child: Text('Floor 2'),
+                  ),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3),
+                    itemCount: 9,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TablePage(index))),
+                        child: Card(
+                          shape: const RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.blueAccent),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          margin: const EdgeInsets.all(10),
+                          elevation: 5,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${index + 1}',
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  const Center(
+                    child: Text('Floor 3'),
+                  ),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3),
+                    itemCount: 9,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TablePage(index))),
+                        child: Card(
+                          shape: const RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.blueAccent),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          margin: const EdgeInsets.all(10),
+                          elevation: 5,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${index + 1}',
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ],

@@ -52,22 +52,25 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
         child: Column(
           children: [
             searchBox(),
-            Row(
-              children: [
-                const Expanded(
-                  flex: 3,
-                  child: Center(
-                    child: Text('Name'),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  const Expanded(
+                    flex: 3,
+                    child: Center(
+                      child: Text('Name'),
+                    ),
                   ),
-                ),
-                const Expanded(
-                  flex: 2,
-                  child: Center(
-                    child: Text('Phone'),
+                  const Expanded(
+                    flex: 2,
+                    child: Center(
+                      child: Text('Phone'),
+                    ),
                   ),
-                ),
-                Expanded(child: Container()),
-              ],
+                  Expanded(child: Container()),
+                ],
+              ),
             ),
             FutureBuilder<List<Customer>>(
               future: futureCustomers,

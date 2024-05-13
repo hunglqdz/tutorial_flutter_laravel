@@ -1,151 +1,80 @@
-import 'package:appdemo/widgets/my_button.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:math_expressions/math_expressions.dart';
+import 'package:flutter_simple_calculator/flutter_simple_calculator.dart';
 
-class CalculatorPage extends StatefulWidget {
+class CalculatorPage extends StatelessWidget {
   const CalculatorPage({super.key});
 
   @override
-  State<CalculatorPage> createState() => _CalculatorPageState();
-}
-
-class _CalculatorPageState extends State<CalculatorPage> {
-  var userQuestion = '';
-  var userAnswer = '';
-
-  final List<String> buttons = [
-    'CLR',
-    'DEL',
-    '%',
-    '/',
-    '7',
-    '8',
-    '9',
-    'x',
-    '4',
-    '5',
-    '6',
-    '-',
-    '1',
-    '2',
-    '3',
-    '+',
-    '0',
-    '00',
-    '.',
-    '='
-  ];
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  userQuestion,
-                  style: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                alignment: Alignment.centerRight,
-                child: Text(
-                  userAnswer,
-                  style: const TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              )
-            ],
-          ),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: buttons.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4),
-            itemBuilder: (context, index) {
-              if (index == 0) {
-                return MyButton(
-                  buttonTapped: () {
-                    setState(() {
-                      userQuestion = '';
-                      userAnswer = '';
-                    });
-                  },
-                  buttonText: buttons[index],
-                  color: Colors.green,
-                  textColor: Colors.white,
-                );
-              } else if (index == 1) {
-                return MyButton(
-                  buttonTapped: () {
-                    setState(() {
-                      userQuestion =
-                          userQuestion.substring(0, userQuestion.length - 1);
-                    });
-                  },
-                  buttonText: buttons[index],
-                  color: Colors.red,
-                  textColor: Colors.white,
-                );
-              } else if (index == buttons.length - 1) {
-                return MyButton(
-                  buttonTapped: () {
-                    setState(() {
-                      equalPressed();
-                    });
-                  },
-                  buttonText: buttons[index],
-                  color: Colors.deepOrange,
-                  textColor: Colors.white,
-                );
-              } else {
-                return MyButton(
-                  buttonTapped: () {
-                    setState(() {
-                      userQuestion += buttons[index];
-                    });
-                  },
-                  buttonText: buttons[index],
-                  color: isOperator(buttons[index])
-                      ? Colors.orange
-                      : Colors.grey.shade100,
-                  textColor:
-                      isOperator(buttons[index]) ? Colors.white : Colors.orange,
-                );
-              }
-            },
-          ),
-        ],
+    return const Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: SizedBox(
+          width: double.infinity,
+          child: CalcButton(),
+        ),
       ),
     );
   }
+}
 
-  bool isOperator(String x) {
-    if (x == '%' || x == '/' || x == 'x' || x == '-' || x == '+' || x == '=') {
-      return true;
-    }
-    return false;
-  }
+class CalcButton extends StatefulWidget {
+  const CalcButton({super.key});
 
-  void equalPressed() {
-    String finalQuestion = userQuestion;
-    finalQuestion = finalQuestion.replaceAll('x', '*');
-    Parser p = Parser();
-    Expression exp = p.parse(finalQuestion);
-    ContextModel cm = ContextModel();
-    double eval = exp.evaluate(EvaluationType.REAL, cm);
-    userAnswer = eval.toString();
+  @override
+  CalcButtonState createState() => CalcButtonState();
+}
+
+class CalcButtonState extends State<CalcButton> {
+  double? _currentValue = 0;
+  @override
+  Widget build(BuildContext context) {
+    var calc = SimpleCalculator(
+      value: _currentValue!,
+      hideExpression: false,
+      hideSurroundingBorder: true,
+      autofocus: true,
+      onChanged: (key, value, expression) {
+        setState(() {
+          _currentValue = value ?? 0;
+        });
+        if (kDebugMode) {
+          print('$key\t$value\t$expression');
+        }
+      },
+      onTappedDisplay: (value, details) {
+        if (kDebugMode) {
+          print('$value\t${details.globalPosition}');
+        }
+      },
+      theme: const CalculatorThemeData(
+        borderColor: Colors.black,
+        borderWidth: 2,
+        displayColor: Colors.black,
+        displayStyle: TextStyle(fontSize: 80, color: Colors.yellow),
+        expressionColor: Colors.indigo,
+        expressionStyle: TextStyle(fontSize: 20, color: Colors.white),
+        operatorColor: Colors.pink,
+        operatorStyle: TextStyle(fontSize: 30, color: Colors.white),
+        commandColor: Colors.orange,
+        commandStyle: TextStyle(fontSize: 30, color: Colors.white),
+        numColor: Colors.grey,
+        numStyle: TextStyle(fontSize: 50, color: Colors.white),
+      ),
+    );
+    return OutlinedButton(
+      child: Text(_currentValue.toString()),
+      onPressed: () {
+        showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (BuildContext context) {
+              return SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.75,
+                  child: calc);
+            });
+      },
+    );
   }
 }

@@ -11,28 +11,44 @@ class MyItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: Card(
+        shape: const RoundedRectangleBorder(
+            side: BorderSide(color: Colors.blueAccent),
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(15),
+                bottomRight: Radius.circular(15))),
         margin: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.blueAccent),
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20))),
+        elevation: 5,
+        color: Colors.white,
         child: Column(
           children: [
-            Image.asset(
-              item.imagePath,
-              width: 160,
-              height: 90,
-              fit: BoxFit.fill,
+            Expanded(
+              flex: 3,
+              child: Image.asset(
+                item.imagePath,
+                width: 200,
+                height: 100,
+                fit: BoxFit.fill,
+              ),
             ),
-            Text(
-              item.name,
-              textAlign: TextAlign.center,
+            Expanded(
+              flex: 2,
+              child: Center(
+                child: Text(
+                  item.name,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ),
             ),
-            Text(
-              '${item.price.toString()} VND',
-              style: const TextStyle(color: Colors.orange),
+            Expanded(
+              child: Center(
+                child: Text(
+                  '${item.price.toString()} VND',
+                  style: const TextStyle(color: Colors.orange),
+                ),
+              ),
             ),
           ],
         ),

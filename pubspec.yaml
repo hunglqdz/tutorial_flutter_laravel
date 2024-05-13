@@ -18,6 +18,7 @@ dependencies:
   collection:
   flutter_credit_card:
   intl:
+  flutter_simple_calculator:
 
 dev_dependencies:
   flutter_test:
@@ -39,3 +40,10 @@ flutter:
     - assets/flags/
     - assets/icon/
     - assets/items/
+
+  fonts:
+    - family: Play
+      fonts:
+        - asset: fonts/Play-Regular.ttf
+        - asset: fonts/Play-Bold.ttf
+          weight: 700

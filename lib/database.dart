@@ -7,26 +7,6 @@ class ItemGroup {
   });
 }
 
-class Floor {
-  int id;
-  String name;
-  Floor({
-    required this.id,
-    required this.name,
-  });
-}
-
-class Table {
-  int id;
-  int floorId;
-  String floorName;
-  Table({
-    required this.id,
-    required this.floorId,
-    required this.floorName,
-  });
-}
-
 class Payment {
   int id;
   int billId;
