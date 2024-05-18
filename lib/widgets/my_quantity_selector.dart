@@ -22,29 +22,24 @@ class MyQuantitySelector extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           GestureDetector(
             onTap: onDecrement,
             child: const Icon(
               Icons.remove,
-              size: 20,
+              size: 30,
             ),
           ),
-          SizedBox(
-            width: 30,
-            child: Center(
-              child: Text(
-                quantity.toString(),
-                style: const TextStyle(fontSize: 20),
-              ),
-            ),
+          Text(
+            quantity.toString(),
+            style: const TextStyle(fontSize: 20),
           ),
           GestureDetector(
             onTap: onIncrement,
             child: const Icon(
               Icons.add,
-              size: 20,
+              size: 30,
             ),
           ),
         ],

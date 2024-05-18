@@ -1,8 +1,11 @@
-class Table {
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+class MyTable {
   int id;
-  int floorId;
-  Table({
+  String floor;
+  bool isReserved;
+  MyTable({
     required this.id,
-    required this.floorId,
+    required this.floor,
+    required this.isReserved,
   });
 }

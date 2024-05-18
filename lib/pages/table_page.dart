@@ -6,11 +6,16 @@ import 'package:provider/provider.dart';
 import '../localization/locales.dart';
 import '../models/item.dart';
 import '../models/restaurant.dart';
+import '../models/table.dart';
 import '../widgets/my_item.dart';
-import 'detail_page.dart';
+import 'cart_page.dart';
 
 class TablePage extends StatefulWidget {
-  const TablePage(int index, {super.key});
+  MyTable table;
+  TablePage({
+    super.key,
+    required this.table,
+  });
 
   @override
   State<TablePage> createState() => _TablePageState();
@@ -46,26 +51,32 @@ class _TablePageState extends State<TablePage>
         itemCount: categoryMenu.length,
         itemBuilder: (context, index) {
           final item = categoryMenu[index];
-          return MyItem(
-            item: item,
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DetailPage(item: item),
-              ),
-            ),
-          );
+          return MyItem(item: item);
         },
       );
     }).toList();
   }
 
+  int _numOfPeople = 1;
+  final _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Table $widget.index'),
+        backgroundColor: Colors.orange,
+        title: Text('Floor ${widget.table.floor} Table ${widget.table.id + 1}'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const CartPage()));
+              },
+              icon: const Icon(Icons.shopping_cart))
+        ],
       ),
+      bottomNavigationBar: _buildBottomNavBar(context),
       body: Column(
         children: [
           TabBar(
@@ -93,6 +104,109 @@ class _TablePageState extends State<TablePage>
                 children: getItemInThisCategory(restaurant.menu),
               ),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBottomNavBar(BuildContext context) {
+    return Container(
+      height: 175,
+      decoration: const BoxDecoration(
+          color: Colors.orange,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextField(
+                    controller: _controller,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Add Note',
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    children: [
+                      const Text('Number of People'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                if (_numOfPeople > 1) {
+                                  _numOfPeople--;
+                                }
+                              });
+                            },
+                            child: const Icon(
+                              Icons.person_remove,
+                              size: 30,
+                            ),
+                          ),
+                          Text(
+                            '$_numOfPeople',
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                if (_numOfPeople < 10) {
+                                  _numOfPeople++;
+                                }
+                              });
+                            },
+                            child: const Icon(
+                              Icons.person_add,
+                              size: 30,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'ORDER',
+                    style: TextStyle(
+                      color: Colors.blueAccent,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

@@ -45,23 +45,6 @@ class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBody: true,
-      // bottomNavigationBar: Theme(
-      //   data: Theme.of(context).copyWith(
-      //     iconTheme: const IconThemeData(color: Colors.white),
-      //   ),
-      //   child: CurvedNavigationBar(
-      //     color: Colors.orange,
-      //     backgroundColor: Colors.transparent,
-      //     height: 60,
-      //     animationCurve: Curves.easeInOut,
-      //     animationDuration: const Duration(milliseconds: 300),
-      //     items: icons,
-      //     index: index,
-      //     onTap: (index) => setState(() => this.index = index),
-      //   ),
-      // ),
-      // body: pages[index],
       appBar: AppBar(
         centerTitle: true,
         title: Text(titles[selectedIndex]),

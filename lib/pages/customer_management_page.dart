@@ -45,7 +45,7 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
             ),
           );
         },
-        child: const Icon(Icons.person_add),
+        child: const Icon(Icons.add),
       ),
       body: Container(
         padding: const EdgeInsets.all(15),
@@ -59,13 +59,13 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
                   const Expanded(
                     flex: 3,
                     child: Center(
-                      child: Text('Name'),
+                      child: Text('Customer name'),
                     ),
                   ),
                   const Expanded(
                     flex: 2,
                     child: Center(
-                      child: Text('Phone'),
+                      child: Text('Phone number'),
                     ),
                   ),
                   Expanded(child: Container()),
@@ -122,6 +122,9 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
                                           child: Text(
                                             customer.name,
                                             textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold),
                                           ),
                                         ),
                                         Expanded(
@@ -129,6 +132,9 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
                                           child: Text(
                                             customer.phone,
                                             textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold),
                                           ),
                                         ),
                                         Expanded(
@@ -139,7 +145,7 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
                                               fetchCustomers();
                                             },
                                             icon: const Icon(
-                                              Icons.delete,
+                                              Icons.delete_forever,
                                               color: Colors.red,
                                             ),
                                           ),
@@ -150,7 +156,7 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
                                 );
                               },
                               separatorBuilder: (context, index) =>
-                                  const SizedBox(height: 15),
+                                  const SizedBox(),
                               itemCount: customers.length),
                         );
                 }
